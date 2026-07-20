@@ -111,3 +111,4 @@ Per attivarlo segui le istruzioni scritte dentro il file (rinominalo in `deploy.
 - **SEO**: Schema.org arricchito (telefono, email, immagine, CAP, tipo attività) e `og:image`/`og:url`
   resi assoluti (con segnaposto dominio); aggiunto `og:locale`.
 - **Cartella `img/`** completata e alleggerita: rimosso il `.mov` pesante; totale ~3.2 MB.
+# aurorapersonalpilates
