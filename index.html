@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#2a2420" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Aurora Personal Pilates | Prato & Forte dei Marmi</title>
+  <meta name="description" content="Aurora Personal Pilates — studio esclusivo con sedi a Prato e Forte dei Marmi. Lezioni individuali, in coppia e piccoli gruppi su misura per chi cerca eccellenza." />
+  <meta property="og:title" content="Aurora Personal Pilates" />
+  <meta property="og:description" content="Pilates di alto livello. Ambienti esclusivi a Prato e Forte dei Marmi." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="it_IT" />
+  <!-- TODO: sostituire REPLACE_WITH_DOMAIN con il dominio reale (es. https://www.aurorapersonalpilates.it) dopo la pubblicazione su Aruba -->
+  <meta property="og:url" content="https://REPLACE_WITH_DOMAIN/" />
+  <meta property="og:image" content="https://REPLACE_WITH_DOMAIN/img/hero.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- TODO: sostituire REPLACE_WITH_DOMAIN con il dominio reale dopo la pubblicazione su Aruba -->
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "Aurora Personal Pilates",
+    "description": "Studio di pilates esclusivo con lezioni individuali, in coppia e piccoli gruppi",
+    "image": "https://REPLACE_WITH_DOMAIN/img/hero.jpg",
+    "url": "https://REPLACE_WITH_DOMAIN/",
+    "telephone": "+39 351 327 0453",
+    "email": "aurorapersonalpilates@gmail.com",
+    "priceRange": "€€€",
+    "address": { "@type": "PostalAddress", "streetAddress": "Via Egisto Niccoli 5/6", "addressLocality": "Prato", "postalCode": "59100", "addressCountry": "IT" }
+  },{
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "Aurora Forte Club — Aurora Personal Pilates",
+    "description": "Studio privato di pilates a Forte dei Marmi",
+    "image": "https://REPLACE_WITH_DOMAIN/img/fdm_studio1.jpg",
+    "url": "https://REPLACE_WITH_DOMAIN/",
+    "telephone": "+39 351 327 0453",
+    "email": "aurorapersonalpilates@gmail.com",
+    "priceRange": "€€€",
+    "address": { "@type": "PostalAddress", "streetAddress": "Via G. Carducci 65", "addressLocality": "Forte dei Marmi", "postalCode": "55042", "addressCountry": "IT" }
+  }]
+  </script>
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root{
+      --white:#FFFFFF;
+      --linen:#cdc1ab;
+      --taupe:#ac9b7e;
+      --taupe-dark:#8a7a62;
+      --ink:#2a2420;
+      --ink-soft:#4a4038;
+      --radius:2px;
+    }
+
+    html{scroll-behavior:smooth;font-size:17px}
+
+    body{
+      font-family:'Jost',sans-serif;
+      background:var(--white);
+      color:var(--ink);
+      font-size:1rem;
+      line-height:1.8;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.18}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+
+    /* ── UTILITY ── */
+    .script{font-family:'Pinyon Script',cursive;font-weight:400}
+    .tag{display:block;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--taupe);margin-bottom:.6rem;font-weight:500}
+    .divider{width:40px;height:1px;background:var(--taupe);margin:.8rem 0 1.8rem}
+    .divider--center{margin:.8rem auto 1.8rem}
+
+    /* ── NAV ── */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:200;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:.75rem 5%;
+      background:rgba(255,255,255,.93);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(172,155,126,.18);
+      transition:padding .3s;
+    }
+
+    nav.scrolled{padding:.4rem 5%}
+
+    .nav-logo{
+      display:block;
+      line-height:0;
+    }
+
+    .nav-logo-img{
+      height:72px;
+      width:auto;
+      display:block;
+    }
+
+    nav.scrolled .nav-logo-img{height:58px}
+
+    .footer-logo-img{
+      height:80px;
+      width:auto;
+      display:block;
+      opacity:.9;
+    }
+
+    .nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+    .nav-links a{font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:400;transition:color .25s}
+    .nav-links a:hover{color:var(--taupe-dark)}
+
+    .nav-cta{
+      border:1px solid var(--taupe) !important;
+      color:var(--taupe-dark) !important;
+      padding:.45rem 1.4rem;
+      letter-spacing:.12em !important;
+      transition:background .25s,color .25s !important;
+    }
+    .nav-cta:hover{background:var(--taupe)!important;color:var(--white)!important}
+
+    .hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px}
+    .hamburger span{width:22px;height:1px;background:var(--ink);transition:.3s;display:block}
+
+    /* ── HERO ── */
+    #hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;align-items:center;
+      overflow:hidden;
+      background:var(--ink);
+    }
+
+    .hero-video-wrap{
+      position:absolute;inset:0;
+      z-index:0;
+    }
+
+    .hero-video-wrap video{
+      width:100%;height:100%;
+      object-fit:cover;
+      opacity:.55;
+    }
+
+    .hero-video-wrap::after{
+      content:'';
+      position:absolute;inset:0;
+      background:linear-gradient(to right, rgba(42,36,32,.72) 0%, rgba(42,36,32,.3) 60%, rgba(42,36,32,.1) 100%);
+    }
+
+    .hero-content{
+      position:relative;z-index:1;
+      display:flex;flex-direction:column;justify-content:center;
+      padding:10rem 7% 6rem;
+      max-width:760px;
+    }
+
+    .hero-content .tag{color:var(--linen);opacity:.8}
+    .hero-content h1{color:var(--white)}
+    .hero-content h1 em{color:var(--linen)}
+    .hero-content p{color:rgba(255,255,255,.75);max-width:420px}
+    .hero-content .divider{background:rgba(205,193,171,.5)}
+
+    .hero-img-side{display:none}
+
+    .hero-script{
+      font-family:'Pinyon Script',cursive;
+      font-size:clamp(3rem,4.5vw,5rem);
+      color:var(--linen);
+      line-height:1;
+      margin-bottom:.2rem;
+    }
+
+    .hero-content h1{
+      font-size:clamp(2.4rem,3.8vw,3.8rem);
+      font-weight:500;
+      color:var(--white);
+      margin-bottom:1.4rem;
+      letter-spacing:-.01em;
+    }
+
+    .hero-content h1 em{font-style:italic;color:var(--linen)}
+
+    .hero-content p{
+      font-size:1.05rem;
+      color:rgba(255,255,255,.78);
+      max-width:380px;
+      margin-bottom:2.5rem;
+      font-weight:300;
+      line-height:1.9;
+    }
+
+    .btn-gold{
+      display:inline-block;
+      border:1px solid var(--taupe);
+      color:var(--taupe-dark);
+      padding:.85rem 2.2rem;
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-weight:500;
+      transition:background .25s,color .25s;
+    }
+    .btn-gold:hover{background:var(--taupe);color:var(--white)}
+
+    .btn-ghost{
+      display:inline-block;
+      color:var(--ink-soft);
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-weight:400;
+      margin-left:1.8rem;
+      padding-bottom:.15rem;
+      border-bottom:1px solid var(--linen);
+      transition:color .25s,border-color .25s;
+    }
+    .btn-ghost:hover{color:var(--taupe-dark);border-color:var(--taupe-dark)}
+
+    .hero-sedi{
+      margin-top:3.5rem;
+      padding-top:2rem;
+      border-top:1px solid rgba(205,193,171,.2);
+      display:flex;gap:2rem;
+    }
+
+    .sede{font-size:.78rem;color:rgba(255,255,255,.6);font-weight:300}
+    .sede strong{display:block;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.85);letter-spacing:.06em;margin-bottom:.15rem}
+
+    #hero .btn-gold{border-color:var(--linen);color:var(--linen)}
+    #hero .btn-gold:hover{background:var(--linen);color:var(--ink)}
+    #hero .btn-ghost{color:rgba(255,255,255,.6);border-color:rgba(205,193,171,.4)}
+    #hero .btn-ghost:hover{color:var(--linen);border-color:var(--linen)}
+
+    /* ── SEZIONI COMUNI ── */
+    section{padding:6rem 5%}
+
+    .section-header{margin-bottom:3.5rem}
+    .section-header.center{text-align:center}
+    .section-header.center .divider{margin:.8rem auto 1.8rem}
+
+    .section-title{font-size:clamp(2rem,3.2vw,2.8rem);font-weight:500}
+
+    /* ── CHI SONO ── */
+    #chi-sono{
+      background:var(--white);
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:5rem;align-items:center;
+    }
+
+    .about-img{
+      position:relative;
+    }
+
+    .about-img-main{
+      aspect-ratio:3/4;
+      overflow:hidden;
+    }
+    .about-img-main img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+    .about-img-main:hover img{transform:scale(1.04)}
+
+    .about-img-accent{
+      position:absolute;
+      bottom:-2.5rem;right:-2rem;
+      width:55%;
+      aspect-ratio:4/3;
+      overflow:hidden;
+      border:6px solid var(--white);
+      box-shadow:0 8px 40px rgba(42,36,32,.12);
+    }
+    .about-img-accent img{width:100%;height:100%;object-fit:cover}
+
+    .about-content{padding-right:1rem}
+
+    .about-content p{
+      font-size:1rem;color:var(--ink-soft);font-weight:300;
+      line-height:1.9;margin-bottom:1rem;
+    }
+
+    .about-script{
+      font-family:'Pinyon Script',cursive;
+      font-size:2rem;
+      color:var(--taupe);
+      margin:1.5rem 0 .5rem;
+    }
+
+    /* ── SERVIZI ── */
+    #servizi{background:#f9f7f4}
+
+    .servizi-grid{
+      display:grid;grid-template-columns:repeat(2,1fr);
+      gap:1.5px;
+      background:rgba(172,155,126,.15);
+    }
+
+    .servizio-card{
+      background:var(--white);
+      padding:3rem 2.8rem;
+      transition:background .3s;
+      cursor:default;
+    }
+
+    .servizio-card:hover{background:#faf8f5}
+
+    .serv-num{
+      font-family:'Playfair Display',serif;
+      font-size:3rem;
+      color:rgba(172,155,126,.2);
+      line-height:1;
+      margin-bottom:1.2rem;
+      font-weight:400;
+    }
+
+    .servizio-card h3{font-size:1.35rem;font-weight:500;margin-bottom:.8rem}
+    .servizio-card p{font-size:.95rem;color:var(--ink-soft);font-weight:300;line-height:1.85}
+
+    /* ── COME FUNZIONA ── */
+    #come-funziona{
+      background:var(--linen);
+      text-align:center;
+    }
+
+    #come-funziona .section-title{color:var(--ink)}
+
+    .steps{
+      display:flex;gap:0;
+      max-width:900px;margin:0 auto;
+      position:relative;
+    }
+
+    .steps::before{
+      content:'';
+      position:absolute;
+      top:28px;left:calc(16.66% + 28px);right:calc(16.66% + 28px);
+      height:1px;background:rgba(172,155,126,.4);
+    }
+
+    .step{flex:1;padding:0 2rem}
+
+    .step-num{
+      width:56px;height:56px;
+      border-radius:50%;
+      border:1px solid var(--taupe);
+      background:var(--white);
+      font-family:'Playfair Display',serif;
+      font-size:1.3rem;
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 1.5rem;
+      color:var(--taupe-dark);
+      position:relative;z-index:1;
+    }
+
+    .step h3{font-size:1.15rem;font-weight:500;margin-bottom:.6rem}
+    .step p{font-size:.93rem;color:var(--ink-soft);font-weight:300;line-height:1.85}
+
+    /* ── SEDI ── */
+    #sedi{
+      background:var(--white);
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:0;
+      padding:0;
+    }
+
+    .sede-card{
+      position:relative;
+      overflow:hidden;
+      aspect-ratio:3/2;
+    }
+
+    .sede-card img{
+      width:100%;height:100%;
+      object-fit:cover;
+      filter:brightness(.75) saturate(.8);
+      transition:transform .8s ease,filter .4s;
+    }
+
+    .sede-card:hover img{transform:scale(1.05);filter:brightness(.65) saturate(.8)}
+
+    .sede-overlay{
+      position:absolute;inset:0;
+      display:flex;flex-direction:column;
+      justify-content:flex-end;
+      padding:3rem;
+      background:linear-gradient(to top, rgba(42,36,32,.65) 0%, transparent 60%);
+    }
+
+    .sede-tag{
+      font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;
+      color:var(--linen);margin-bottom:.5rem;
+    }
+
+    .sede-name{
+      font-family:'Playfair Display',serif;
+      font-size:1.6rem;font-weight:500;color:var(--white);
+      margin-bottom:.3rem;
+    }
+
+    .sede-address{font-size:.82rem;color:rgba(255,255,255,.7);font-weight:300}
+
+    /* ── TESTIMONIANZE ── */
+    #testimonianze{background:#f9f7f4}
+
+    .reel-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:2rem;
+      max-width:900px;
+      margin:0 auto 3.5rem;
+    }
+
+    .reel-wrap{
+      display:flex;
+      justify-content:center;
+    }
+
+    .reel-wrap .instagram-media{
+      min-width:0!important;
+      width:100%!important;
+      max-width:400px!important;
+      margin:0 auto!important;
+    }
+
+    .testi-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:2rem;
+    }
+
+    .testi-card{
+      background:var(--white);
+      padding:2.5rem 2.2rem;
+      border-top:2px solid var(--linen);
+    }
+
+    .stars{
+      display:flex;gap:3px;margin-bottom:1.4rem;
+    }
+
+    .star{
+      width:12px;height:12px;
+      background:var(--taupe);
+      clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+    }
+
+    .testi-card blockquote{
+      font-size:.9rem;color:var(--ink-soft);font-weight:300;
+      line-height:1.9;font-style:italic;margin-bottom:1.8rem;
+    }
+
+    .testi-author strong{
+      font-family:'Playfair Display',serif;
+      font-size:.95rem;display:block;margin-bottom:.15rem;
+    }
+
+    .testi-author span{font-size:.84rem;color:var(--taupe);letter-spacing:.08em}
+
+    .testi-script{
+      font-family:'Pinyon Script',cursive;
+      font-size:1.6rem;
+      color:var(--linen);
+      margin-top:.5rem;
+      display:block;
+    }
+
+    /* ── PREZZI ── */
+    #prezzi{background:var(--white)}
+
+    .prezzi-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:2rem;max-width:980px;margin:0 auto;
+    }
+
+    .prezzo-card{
+      border:1px solid rgba(172,155,126,.3);
+      padding:2.8rem 2rem;
+      text-align:center;
+      transition:box-shadow .3s,transform .3s;
+      position:relative;
+    }
+
+    .prezzo-card:hover{box-shadow:0 12px 48px rgba(42,36,32,.08);transform:translateY(-4px)}
+
+    .prezzo-card.featured{
+      background:var(--ink);
+      border-color:var(--ink);
+      color:var(--white);
+    }
+
+    .prezzo-card.featured h3{color:var(--linen)}
+
+    .prezzo-best{
+      position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+      background:var(--taupe);
+      color:var(--white);
+      font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+      padding:.3rem 1.2rem;font-weight:500;
+    }
+
+    .prezzo-card h3{
+      font-size:1rem;letter-spacing:.12em;text-transform:uppercase;
+      font-family:'Jost',sans-serif;font-weight:500;margin-bottom:1.8rem;
+    }
+
+    .prezzo-num{
+      font-family:'Playfair Display',serif;
+      font-size:3.5rem;font-weight:400;line-height:1;
+      margin-bottom:.3rem;color:var(--taupe-dark);
+    }
+
+    .prezzo-card.featured .prezzo-num{color:var(--linen)}
+
+    .prezzo-num sup{font-size:1.4rem;vertical-align:super}
+
+    .prezzo-desc{
+      font-size:.88rem;color:var(--ink-soft);margin-bottom:2rem;font-weight:300;
+    }
+
+    .prezzo-card.featured .prezzo-desc{color:rgba(205,193,171,.7)}
+
+    .prezzo-list{
+      list-style:none;text-align:left;margin-bottom:2.2rem;
+      font-size:.9rem;font-weight:300;
+    }
+
+    .prezzo-list li{
+      padding:.5rem 0;
+      border-bottom:1px solid rgba(172,155,126,.15);
+      display:flex;gap:.7rem;align-items:flex-start;
+      color:var(--ink-soft);
+    }
+
+    .prezzo-card.featured .prezzo-list li{color:rgba(255,255,255,.7);border-color:rgba(205,193,171,.12)}
+
+    .prezzo-list li::before{content:'—';color:var(--taupe);flex-shrink:0}
+
+    .btn-prezzo{
+      display:block;
+      border:1px solid var(--taupe);
+      color:var(--taupe-dark);
+      padding:.75rem;
+      font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;
+      font-weight:500;transition:background .25s,color .25s;
+    }
+
+    .btn-prezzo:hover{background:var(--taupe);color:var(--white)}
+
+    .prezzo-card.featured .btn-prezzo{
+      border-color:var(--linen);color:var(--linen);
+    }
+
+    .prezzo-card.featured .btn-prezzo:hover{background:var(--linen);color:var(--ink)}
+
+    /* ── PRENOTA ── */
+    #prenota{
+      background:#f9f7f4;
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:5rem;align-items:start;
+    }
+
+    .prenota-info .section-title{margin-bottom:.5rem}
+
+    .prenota-info p{
+      font-size:.9rem;color:var(--ink-soft);font-weight:300;
+      line-height:1.9;margin-bottom:.8rem;
+    }
+
+    .prenota-contacts{margin-top:2rem;display:flex;flex-direction:column;gap:.6rem}
+
+    .ci{
+      display:flex;gap:1rem;align-items:baseline;
+      font-size:.93rem;font-weight:300;color:var(--ink-soft);
+      padding-bottom:.6rem;border-bottom:1px solid rgba(172,155,126,.15);
+    }
+
+    .ci-label{
+      font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--taupe);font-weight:500;min-width:60px;
+    }
+
+    .prenota-cta-wa{
+      display:inline-block;
+      margin-top:2rem;
+      background:var(--ink);
+      color:var(--white);
+      padding:.9rem 2.2rem;
+      font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
+      font-weight:500;
+      transition:background .25s;
+    }
+
+    .prenota-cta-wa:hover{background:var(--taupe-dark)}
+
+    form{display:flex;flex-direction:column;gap:1.2rem}
+
+    .form-group{display:flex;flex-direction:column;gap:.4rem}
+
+    label{
+      font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+      color:var(--taupe);font-weight:500;
+    }
+
+    input,textarea,select{
+      padding:.85rem 1rem;
+      border:1px solid rgba(172,155,126,.3);
+      font-family:'Jost',sans-serif;
+      font-size:.9rem;font-weight:300;
+      background:var(--white);color:var(--ink);
+      outline:none;transition:border-color .2s;
+      resize:vertical;border-radius:0;
+      -webkit-appearance:none;
+    }
+
+    input:focus,textarea:focus,select:focus{border-color:var(--taupe)}
+
+    .btn-submit{
+      border:1px solid var(--ink);
+      background:var(--ink);color:var(--white);
+      padding:.95rem;
+      font-family:'Jost',sans-serif;
+      font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
+      font-weight:500;cursor:pointer;
+      transition:background .25s,color .25s;
+      margin-top:.5rem;
+    }
+
+    .btn-submit:hover{background:var(--taupe);border-color:var(--taupe)}
+    .btn-submit:disabled{opacity:.6;cursor:default}
+
+    /* Honeypot — nascosto agli umani, visibile ai bot */
+    .hp-field{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;pointer-events:none}
+
+    .form-status{
+      font-size:.85rem;font-weight:400;line-height:1.6;
+      margin-top:.2rem;min-height:1.2em;
+    }
+    .form-status.ok{color:var(--taupe-dark)}
+    .form-status.err{color:#a34b3a}
+
+    /* ── FOOTER ── */
+    footer{
+      background:var(--ink);
+      color:rgba(255,255,255,.45);
+      padding:3.5rem 5%;
+    }
+
+    .footer-inner{
+      display:flex;justify-content:space-between;align-items:center;
+      flex-wrap:wrap;gap:2rem;
+      padding-bottom:2.5rem;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .footer-logo{
+      font-family:'Playfair Display',serif;
+      font-size:1.1rem;color:var(--white);
+      letter-spacing:.04em;
+    }
+
+    .footer-logo small{
+      display:block;font-family:'Jost',sans-serif;
+      font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;
+      color:var(--taupe);margin-top:.2rem;
+    }
+
+    .footer-sedi{
+      font-size:.85rem;font-weight:300;line-height:2;
+    }
+
+    .footer-sedi strong{color:rgba(255,255,255,.7);display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.2rem}
+
+    .footer-socials{display:flex;gap:1rem}
+
+    .soc{
+      width:38px;height:38px;
+      border:1px solid rgba(255,255,255,.15);
+      display:flex;align-items:center;justify-content:center;
+      color:rgba(255,255,255,.55);
+      transition:border-color .2s,color .2s;
+      cursor:pointer;
+    }
+
+    .soc svg{display:block}
+    .soc:hover{border-color:var(--taupe);color:var(--taupe)}
+
+    .footer-bottom{
+      display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+      padding-top:1.5rem;
+      font-size:.72rem;letter-spacing:.06em;
+    }
+
+    .footer-bottom a{color:rgba(255,255,255,.45);transition:color .2s}
+    .footer-bottom a:hover{color:var(--linen)}
+
+    /* ── FADE-IN ── */
+    .fi{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .fi.v{opacity:1;transform:none}
+    .fi.d1{transition-delay:.1s}
+    .fi.d2{transition-delay:.2s}
+    .fi.d3{transition-delay:.3s}
+    .fi.d4{transition-delay:.4s}
+
+    /* ── PRATO GALLERY ── */
+    #prato-gallery{
+      background:var(--white);
+      padding:0 0 5rem;
+      overflow:hidden;
+    }
+
+    .prato-gallery{
+      display:flex;flex-direction:column;
+      gap:.8rem;
+      max-width:1400px;
+      margin:0 auto;
+      padding:0 5%;
+    }
+
+    .prato-row{
+      display:grid;
+      gap:.8rem;
+    }
+
+    .prato-row--2{grid-template-columns:1fr 1fr}
+    .prato-row--3{grid-template-columns:1fr 1fr 1fr}
+
+    .prato-photo{
+      overflow:hidden;
+      position:relative;
+      background:var(--linen);
+    }
+
+    .prato-photo--land .prato-photo-inner{aspect-ratio:3/2}
+    .prato-photo--port .prato-photo-inner{aspect-ratio:3/4}
+
+    .prato-photo-inner{overflow:hidden}
+
+    .prato-photo-inner img{
+      width:100%;height:100%;
+      object-fit:cover;display:block;
+      transition:transform .9s cubic-bezier(.25,.46,.45,.94), filter .4s;
+      filter:brightness(.97) saturate(.88);
+    }
+
+    .prato-photo:hover .prato-photo-inner img{
+      transform:scale(1.05);
+      filter:brightness(1) saturate(1);
+    }
+
+    /* ── FORTE DEI MARMI GALLERY ── */
+    #forte-dei-marmi{
+      background:var(--ink);
+      padding:6rem 5% 5rem;
+      overflow:hidden;
+    }
+
+    .fdm-header{
+      text-align:center;
+      max-width:600px;
+      margin:0 auto 4rem;
+    }
+
+    .fdm-logo-wrap{
+      margin-bottom:1.5rem;
+      min-height:80px;
+      display:flex;align-items:center;justify-content:center;
+    }
+
+    .fdm-logo-img{
+      height:80px;width:auto;
+      display:block;margin:0 auto;
+    }
+
+    .fdm-header .tag{color:var(--taupe);opacity:.8}
+
+    .fdm-title{color:var(--white)}
+    .fdm-title em{color:var(--linen)}
+
+    .fdm-header .divider{background:rgba(172,155,126,.4)}
+
+    .fdm-sub{
+      font-size:1rem;color:rgba(255,255,255,.7);
+      font-weight:300;line-height:1.9;margin-bottom:1rem;
+    }
+
+    .fdm-address-line{
+      font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--taupe);font-weight:400;
+    }
+
+    /* ── Gallery layout ── */
+    .fdm-gallery{
+      display:grid;
+      grid-template-columns:1fr 1.2fr 1fr;
+      gap:1.5rem;
+      align-items:end;
+      max-width:1200px;
+      margin:0 auto;
+    }
+
+    .fdm-gallery--single{
+      grid-template-columns:1fr;
+      max-width:560px;
+    }
+
+    .fdm-photo{position:relative;overflow:hidden}
+
+    .fdm-photo--tall .fdm-photo-inner{aspect-ratio:3/4}
+    .fdm-photo--mid .fdm-photo-inner{aspect-ratio:4/5;margin-bottom:0}
+
+    .fdm-photo-inner{
+      overflow:hidden;
+      position:relative;
+    }
+
+    .fdm-photo-inner img{
+      width:100%;height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform .9s cubic-bezier(.25,.46,.45,.94);
+      filter:brightness(.9) saturate(.85);
+    }
+
+    .fdm-photo:hover .fdm-photo-inner img{
+      transform:scale(1.06);
+      filter:brightness(.95) saturate(.95);
+    }
+
+    .fdm-photo-inner::after{
+      content:'';
+      position:absolute;inset:0;
+      background:linear-gradient(to top, rgba(42,36,32,.5) 0%, transparent 50%);
+      pointer-events:none;
+    }
+
+    .fdm-photo-caption{
+      position:absolute;bottom:1rem;left:1.2rem;
+      font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+      color:rgba(255,255,255,.6);font-weight:400;
+    }
+
+    /* Staggered entrance — middle photo offset upward */
+    .fdm-photo--mid{
+      transform:translateY(-2rem);
+    }
+
+    .fdm-cta{
+      text-align:center;
+      margin-top:3.5rem;
+    }
+
+    /* ── Stagger delays via data-delay ── */
+    .fdm-photo[data-delay="0"]{transition-delay:0s}
+    .fdm-photo[data-delay="150"]{transition-delay:.15s}
+    .fdm-photo[data-delay="300"]{transition-delay:.3s}
+    .prato-photo[data-delay="0"]{transition-delay:0s}
+    .prato-photo[data-delay="100"]{transition-delay:.1s}
+    .prato-photo[data-delay="200"]{transition-delay:.2s}
+
+    /* ── TOUCH TARGETS & SAFE AREAS ── */
+    a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+    input,textarea,select{font-size:16px!important} /* prevent iOS zoom on focus */
+    nav{padding-top:max(1.1rem, env(safe-area-inset-top))}
+    footer{padding-bottom:max(3.5rem, calc(2rem + env(safe-area-inset-bottom)))}
+    #hero{min-height:100svh} /* small viewport height for mobile browsers */
+
+    /* ── TABLET (≤960px) ── */
+    @media(max-width:960px){
+      /* NAV */
+      .nav-links{
+        display:none;flex-direction:column;position:fixed;
+        top:0;left:0;right:0;bottom:0;
+        background:rgba(255,255,255,.98);
+        padding:6rem 8% 3rem;
+        gap:0;
+        z-index:150;
+        overflow-y:auto;
+      }
+      .nav-links li{border-bottom:1px solid rgba(172,155,126,.15)}
+      .nav-links a{
+        display:block;padding:1.1rem 0;
+        font-size:1rem;letter-spacing:.14em;
+      }
+      .nav-links .nav-cta{
+        display:inline-block;margin-top:1.5rem;padding:.85rem 2rem;
+        border:1px solid var(--taupe);
+      }
+      .nav-links.open{display:flex}
+      .hamburger{display:flex;z-index:200;position:relative}
+
+      /* HERO */
+      .hero-content{padding:7rem 6% 4rem;max-width:100%}
+      .hero-sedi{flex-direction:column;gap:1rem;margin-top:2.5rem}
+      .hero-sedi .sede:last-child{
+        padding-left:0!important;border-left:none!important;
+        padding-top:.8rem;border-top:1px solid rgba(205,193,171,.2);
+      }
+
+      /* GRIDS → 1 colonna */
+      #chi-sono,#prenota{grid-template-columns:1fr;gap:2.5rem}
+      #sedi{grid-template-columns:1fr}
+      .servizi-grid{grid-template-columns:1fr 1fr}
+      .testi-grid{grid-template-columns:1fr 1fr}
+      .reel-grid{grid-template-columns:1fr 1fr;gap:1.2rem}
+      .prezzi-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}
+
+      /* STEPS */
+      .steps{flex-direction:column;align-items:center;gap:2rem}
+      .steps::before{display:none}
+      .step{max-width:360px;width:100%}
+
+      /* CHI SONO */
+      .about-img-accent{display:none}
+      .about-img-main{aspect-ratio:3/2}
+      .about-content{padding-right:0}
+
+      /* FOOTER */
+      footer .footer-inner{flex-direction:column;text-align:center;align-items:center}
+      .footer-sedi{text-align:center}
+    }
+
+    /* ── MOBILE (≤640px) ── */
+    @media(max-width:640px){
+      section{padding:4rem 6%}
+
+      /* HERO */
+      .hero-content{padding:6rem 6% 3.5rem}
+      .btn-ghost{margin-left:0;margin-top:1rem;display:inline-block}
+
+      /* SERVIZI → 1 colonna */
+      .servizi-grid{grid-template-columns:1fr}
+      .servizio-card{padding:1.8rem}
+
+      /* TESTIMONIANZE → 1 colonna */
+      .testi-grid{grid-template-columns:1fr}
+      .reel-grid{grid-template-columns:1fr;max-width:420px}
+
+      /* PREZZI → 1 colonna */
+      .prezzi-grid{max-width:100%}
+      .prezzo-card{padding:2.2rem 1.6rem}
+
+      /* SEDI */
+      #sedi{padding:0}
+      .sede-card{aspect-ratio:4/3}
+      .sede-overlay{padding:2rem}
+      .sede-name{font-size:1.3rem}
+
+      /* STEPS */
+      .step{padding:0 1rem}
+
+      /* CHI SONO */
+      .about-img-main{aspect-ratio:4/3}
+      .about-stats{gap:1.5rem}
+      .stat strong{font-size:1.8rem}
+
+      /* FORM */
+      input,textarea,select{padding:.9rem}
+
+      /* FOOTER */
+      .footer-bottom{flex-direction:column;gap:.4rem;text-align:center}
+      .footer-socials{justify-content:center}
+
+      /* PRENOTA */
+      .prenota-cta-wa{display:block;text-align:center;margin-top:1.5rem}
+    }
+
+    /* ── PRATO GALLERY RESPONSIVE ── */
+    @media(max-width:960px){
+      .prato-row--3{grid-template-columns:1fr 1fr}
+      .prato-row--3 .prato-photo:last-child{display:none}
+    }
+    @media(max-width:640px){
+      .prato-row--2{grid-template-columns:1fr}
+      .prato-row--3{grid-template-columns:1fr 1fr}
+      .prato-row--3 .prato-photo:last-child{display:none}
+      .prato-photo--land .prato-photo-inner{aspect-ratio:4/3}
+      .prato-photo--port .prato-photo-inner{aspect-ratio:4/3}
+    }
+
+    /* ── FDM RESPONSIVE ── */
+    @media(max-width:960px){
+      .fdm-gallery{grid-template-columns:1fr 1fr;gap:1rem}
+      .fdm-photo--tall:last-child{display:none}
+      .fdm-photo--mid{transform:none}
+    }
+
+    @media(max-width:640px){
+      #forte-dei-marmi{padding:4rem 6% 3.5rem}
+      .fdm-gallery{grid-template-columns:1fr;gap:1rem;max-width:480px;margin:0 auto}
+      .fdm-photo--tall .fdm-photo-inner,
+      .fdm-photo--mid .fdm-photo-inner{aspect-ratio:4/3}
+      .fdm-photo--tall:last-child{display:block}
+      .fdm-photo--mid{transform:none}
+    }
+
+    /* ── SMALL MOBILE (≤390px — iPhone SE, mini) ── */
+    @media(max-width:390px){
+      section{padding:3.5rem 5%}
+      .hero-content{padding:5.5rem 5% 3rem}
+      .servizio-card{padding:1.5rem}
+      .prezzo-card{padding:2rem 1.2rem}
+      .about-stats{flex-wrap:wrap;gap:1.2rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <img src="./img/logo_dark.png" alt="Aurora Personal Pilates" class="nav-logo-img" />
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#chi-sono">Chi sono</a></li>
+    <li><a href="#servizi">Servizi</a></li>
+    <li><a href="#sedi">Sedi</a></li>
+    <li><a href="#prezzi">Prezzi</a></li>
+    <li><a href="#prenota" class="nav-cta">Prenota</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <!-- Video di sfondo -->
+  <div class="hero-video-wrap">
+    <video autoplay muted loop playsinline poster="./img/hero.jpg">
+      <source src="./img/hero_video.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="hero-content">
+    <span class="tag">Prato · Forte dei Marmi</span>
+    <p class="hero-script">Aurora</p>
+    <h1>Il Pilates<br /><em>come non l'hai<br />mai vissuto.</em></h1>
+    <div class="divider"></div>
+    <p>Un'esperienza esclusiva, costruita su di te. Lezioni individuali e percorsi su misura in ambienti curati, per chi non si accontenta del classico.</p>
+    <div>
+      <a href="#prenota" class="btn-gold">Prenota una sessione</a>
+      <a href="#servizi" class="btn-ghost">Scopri i servizi</a>
+    </div>
+    <div class="hero-sedi">
+      <div class="sede">
+        <strong>Prato</strong>
+        Via Egisto Niccoli 5/6
+      </div>
+      <div class="sede" style="padding-left:2rem;border-left:1px solid rgba(172,155,126,.25)">
+        <strong>Forte dei Marmi <span style="font-size:.65rem;color:var(--taupe);letter-spacing:.1em">— NUOVO</span></strong>
+        Via G. Carducci 65
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CHI SONO ── -->
+<section id="chi-sono">
+  <div class="about-img fi">
+    <div class="about-img-main">
+      <img
+        src="./img/aurora.jpg"
+        alt="Aurora — Aurora Personal Pilates"
+        loading="lazy"
+      />
+    </div>
+    <div class="about-img-accent">
+      <img
+        src="./img/aurora2.jpg"
+        alt="Aurora — Aurora Personal Pilates studio"
+        loading="lazy"
+      />
+    </div>
+  </div>
+  <div class="about-content fi d1">
+    <span class="tag">Chi sono</span>
+    <h2 class="section-title">Sono Aurora,<br /><em>trainer e fondatrice.</em></h2>
+    <div class="divider"></div>
+    <p>Il mio percorso nasce oltre 10 anni fa, dal desiderio di trasformare il movimento in qualcosa di più profondo di un semplice allenamento: uno strumento per conoscersi, ritrovarsi e stare meglio nel proprio corpo.</p>
+    <p>Dopo anni di esperienza come personal trainer e l'apertura del mio primo centro a Prato, ho scelto di portare la mia visione anche a Forte dei Marmi, creando uno studio privato di Pilates dove attenzione, qualità e cura della persona sono al centro di ogni percorso.</p>
+    <p>Aurora Forte Club è il risultato di una storia fatta di determinazione, autenticità e scelte coraggiose. Un luogo pensato per chi cerca un'esperienza personalizzata, elegante e costruita su misura.</p>
+    <div class="about-script">Oltre 10 anni di passione.</div>
+    <a href="#prenota" class="btn-gold" style="margin-top:1.5rem">Prenota la tua lezione</a>
+  </div>
+</section>
+
+<!-- ── SERVIZI ── -->
+<section id="servizi">
+  <div class="section-header fi">
+    <span class="tag">Cosa offro</span>
+    <h2 class="section-title">I servizi</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="servizi-grid">
+    <div class="servizio-card fi">
+      <div class="serv-num">01</div>
+      <h3>Lezione individuale</h3>
+      <p>Un'ora dedicata esclusivamente a te. Programma costruito sulle tue esigenze, costantemente aggiornato sessione dopo sessione. Il massimo dell'efficacia e della personalizzazione.</p>
+    </div>
+    <div class="servizio-card fi d1">
+      <div class="serv-num">02</div>
+      <h3>Lezione in coppia</h3>
+      <p>Condividi l'esperienza con una persona scelta da te — un'amica, il tuo partner. La cura rimane personalizzata su entrambe, con la motivazione in più di allenarsi insieme.</p>
+    </div>
+    <div class="servizio-card fi d2">
+      <div class="serv-num">03</div>
+      <h3>Piccolo gruppo <span style="font-size:.75rem;color:var(--taupe);font-family:'Jost',sans-serif;font-weight:300">(max 4 persone)</span></h3>
+      <p>Un formato esclusivo che mantiene l'attenzione individuale pur condividendo l'energia del gruppo. Lezioni programmate con ritmo fisso, per un percorso costante e motivante.</p>
+    </div>
+    <div class="servizio-card fi d3">
+      <div class="serv-num">04</div>
+      <h3>Percorso specializzato</h3>
+      <p>Post-riabilitazione, gravidanza e post-parto, rieducazione posturale. Programmi studiati in ogni dettaglio per esigenze specifiche, con la stessa cura di ogni altra sessione.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── COME FUNZIONA ── -->
+<section id="come-funziona">
+  <div class="section-header center fi">
+    <span class="tag">Il percorso</span>
+    <h2 class="section-title">Come funziona</h2>
+    <div class="divider divider--center"></div>
+  </div>
+  <div class="steps">
+    <div class="step fi">
+      <div class="step-num">I</div>
+      <h3>Prima sessione conoscitiva</h3>
+      <p>Un incontro per capire la tua storia, i tuoi obiettivi e ciò che vuoi cambiare. Con tutta l'attenzione e la cura che meriti.</p>
+    </div>
+    <div class="step fi d1">
+      <div class="step-num">II</div>
+      <h3>Prima sessione</h3>
+      <p>Valutiamo insieme postura, mobilità e punti di forza. Cominciamo a muoverci con consapevolezza, costruendo le basi del tuo percorso.</p>
+    </div>
+    <div class="step fi d2">
+      <div class="step-num">III</div>
+      <h3>Percorso su misura</h3>
+      <p>Un programma che evolve con te, settimana dopo settimana. Nessuna lezione uguale all'altra. Solo progresso reale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEDI ── -->
+<section id="sedi" style="padding:0">
+  <div class="sede-card">
+    <img
+      src="./img/studio_prato.jpg"
+      alt="Aurora Personal Pilates — Studio Prato"
+      loading="lazy"
+    />
+    <div class="sede-overlay">
+      <span class="sede-tag">Aurora Personal Pilates</span>
+      <div class="sede-name">Prato</div>
+      <div class="sede-address">Via Egisto Niccoli 5/6</div>
+    </div>
+  </div>
+  <div class="sede-card">
+    <img
+      src="./img/studio_fdm.jpg"
+      alt="Aurora Personal Pilates — Studio Forte dei Marmi"
+      loading="lazy"
+    />
+    <div class="sede-overlay">
+      <span class="sede-tag">Aurora Forte Club</span>
+      <div class="sede-name">Forte dei Marmi</div>
+      <div class="sede-address">Via G. Carducci 65</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRATO GALLERY ── -->
+<section id="prato-gallery">
+  <div class="prato-gallery">
+    <!-- Row 1: 2 landscape -->
+    <div class="prato-row prato-row--2">
+      <div class="prato-photo prato-photo--land fi" data-delay="0">
+        <div class="prato-photo-inner">
+          <img src="./img/prato_1.jpg" alt="Aurora Personal Pilates Prato — Studio reformer" loading="lazy" />
+        </div>
+      </div>
+      <div class="prato-photo prato-photo--land fi" data-delay="100">
+        <div class="prato-photo-inner">
+          <img src="./img/prato_2.jpg" alt="Aurora Personal Pilates Prato — Sala barre" loading="lazy" />
+        </div>
+      </div>
+    </div>
+    <!-- Row 2: 3 portrait -->
+    <div class="prato-row prato-row--3">
+      <div class="prato-photo prato-photo--port fi" data-delay="0">
+        <div class="prato-photo-inner">
+          <img src="./img/prato_3.jpg" alt="Aurora Personal Pilates Prato — Sessione sul reformer" loading="lazy" />
+        </div>
+      </div>
+      <div class="prato-photo prato-photo--port fi" data-delay="100">
+        <div class="prato-photo-inner">
+          <img src="./img/prato_4.jpg" alt="Aurora Personal Pilates Prato — Cadillac" loading="lazy" />
+        </div>
+      </div>
+      <div class="prato-photo prato-photo--port fi" data-delay="200">
+        <div class="prato-photo-inner">
+          <img src="./img/prato_5.jpg" alt="Aurora Personal Pilates Prato — Zona accoglienza" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FORTE DEI MARMI GALLERY ── -->
+<section id="forte-dei-marmi">
+
+  <!-- Header con logo Forte Club -->
+  <div class="fdm-header fi">
+    <div class="fdm-logo-wrap">
+      <img src="./img/logo_fdm_tondo.png" alt="Aurora Forte Club" class="fdm-logo-img" onerror="this.style.display='none'" />
+    </div>
+    <span class="tag">Nuovo Studio · 2025</span>
+    <h2 class="section-title fdm-title">Aurora<br /><em>Forte Club</em></h2>
+    <div class="divider divider--center"></div>
+    <p class="fdm-sub">Uno spazio esclusivo nel cuore di Forte dei Marmi. Soffitti drappeggiati, luce naturale, specchi ovali in oro e macchinari di alta gamma. Un'esperienza sensoriale oltre che fisica.</p>
+    <p class="fdm-address-line">
+      <span>Via G. Carducci 65 · Forte dei Marmi</span>
+    </p>
+  </div>
+
+  <!-- Gallery — 3 foto studio Forte dei Marmi -->
+  <div class="fdm-gallery">
+
+    <div class="fdm-photo fdm-photo--tall fi" data-delay="0">
+      <div class="fdm-photo-inner">
+        <img src="./img/fdm_studio2.jpg" alt="Aurora Forte Club — Reformer e specchi ovali dorati" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="fdm-photo fdm-photo--mid fi" data-delay="150">
+      <div class="fdm-photo-inner">
+        <img src="./img/fdm_studio1.jpg" alt="Aurora Forte Club — Studio con specchi ovali dorati" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="fdm-photo fdm-photo--tall fi" data-delay="300">
+      <div class="fdm-photo-inner">
+        <img src="./img/fdm_entrance.jpg" alt="Aurora Forte Club — Ingresso dello studio" loading="lazy" />
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="fdm-cta fi">
+    <a href="#prenota" class="btn-gold">Prenota a Forte dei Marmi</a>
+  </div>
+
+</section>
+
+<!-- ── TESTIMONIANZE ── -->
+<section id="testimonianze">
+  <div class="section-header fi">
+    <span class="tag">Recensioni</span>
+    <h2 class="section-title">Le parole<br /><em>delle nostre clienti</em></h2>
+    <div class="divider"></div>
+  </div>
+  <!-- Reel video testimonial -->
+  <div class="reel-grid fi">
+    <div class="reel-wrap">
+      <blockquote
+        class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/reel/DaC5xvat4EI/?igsh=bjl3aXZrejg2OWkz"
+        data-instgrm-version="14"
+        style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:1px;padding:0;width:calc(100% - 2px)">
+        <a href="https://www.instagram.com/reel/DaC5xvat4EI/?igsh=bjl3aXZrejg2OWkz" target="_blank" rel="noopener">Guarda la recensione su Instagram</a>
+      </blockquote>
+    </div>
+    <div class="reel-wrap">
+      <blockquote
+        class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/reel/DX6Zkr4NiP6/?igsh=djFqNGswcjJ5dWZr"
+        data-instgrm-version="14"
+        style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:1px;padding:0;width:calc(100% - 2px)">
+        <a href="https://www.instagram.com/reel/DX6Zkr4NiP6/?igsh=djFqNGswcjJ5dWZr" target="_blank" rel="noopener">Guarda la recensione su Instagram</a>
+      </blockquote>
+    </div>
+  </div>
+
+  <div class="testi-grid">
+    <div class="testi-card fi">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <blockquote>"Aurora è estremamente attenta, precisa e ti segue davvero in ogni esercizio. Ambiente curato, tranquillo e professionale. Ho notato miglioramenti concreti su postura e controllo del corpo. Non è il classico pilates: è un lavoro su misura, di livello decisamente più alto. Consigliato a chi cerca qualità vera."</blockquote>
+      <div class="testi-author">
+        <strong>Elisabetta S.</strong>
+        <span>Cliente Aurora Personal Pilates</span>
+        <em class="testi-script">Elisabetta S.</em>
+      </div>
+    </div>
+    <div class="testi-card fi d1">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <blockquote>"Ho iniziato con Aurora dopo anni di mal di schiena cronico. In pochi mesi il dolore è quasi scomparso. Un percorso che ha trasformato il mio rapporto con il corpo. Lo studio è un ambiente di rara cura e quiete."</blockquote>
+      <div class="testi-author">
+        <strong>Martina R.</strong>
+        <span>Cliente da 2 anni</span>
+        <em class="testi-script">Martina R.</em>
+      </div>
+    </div>
+    <div class="testi-card fi d2">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <blockquote>"Ho seguito il percorso in gravidanza e post-parto. Aurora conosce il corpo femminile in modo profondo. Mi sono sempre sentita in mani sicure, in un ambiente che non avevo trovato altrove."</blockquote>
+      <div class="testi-author">
+        <strong>Sara T.</strong>
+        <span>Cliente — Forte dei Marmi</span>
+        <em class="testi-script">Sara T.</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PREZZI ── -->
+<section id="prezzi">
+  <div class="section-header center fi">
+    <span class="tag">Lezioni &amp; Pacchetti</span>
+    <h2 class="section-title">Scegli<br /><em>il tuo percorso</em></h2>
+    <div class="divider divider--center"></div>
+    <p style="font-size:.88rem;color:var(--ink-soft);font-weight:300;max-width:520px;margin:0 auto">Ogni percorso è costruito su misura. Contattami per conoscere le opzioni disponibili e trovare insieme la soluzione più adatta a te.</p>
+  </div>
+  <div class="prezzi-grid">
+    <div class="prezzo-card fi">
+      <h3>Lezione privata</h3>
+      <p class="prezzo-desc">Individuale · 60 min</p>
+      <ul class="prezzo-list">
+        <li>Attenzione esclusiva</li>
+        <li>Programma personalizzato</li>
+        <li>Progressione costante</li>
+        <li>Disponibile a Prato e Forte dei Marmi</li>
+      </ul>
+      <a href="#prenota" class="btn-prezzo">Richiedi info</a>
+    </div>
+    <div class="prezzo-card featured fi d1">
+      <h3>Lezione in coppia</h3>
+      <p class="prezzo-desc">2 persone · 60 min</p>
+      <ul class="prezzo-list">
+        <li>Cura personalizzata su entrambe</li>
+        <li>Motivazione condivisa</li>
+        <li>Programma adattato in duo</li>
+        <li>Disponibile a Prato e Forte dei Marmi</li>
+      </ul>
+      <a href="#prenota" class="btn-prezzo">Richiedi info</a>
+    </div>
+    <div class="prezzo-card fi d2">
+      <h3>Piccolo gruppo</h3>
+      <p class="prezzo-desc">Max 4 persone · 60 min</p>
+      <ul class="prezzo-list">
+        <li>Attenzione individuale nel gruppo</li>
+        <li>Energia collettiva</li>
+        <li>Ritmo fisso e costante</li>
+        <li>Barre disponibile a Prato</li>
+      </ul>
+      <a href="#prenota" class="btn-prezzo">Richiedi info</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRENOTA ── -->
+<section id="prenota">
+  <div class="prenota-info fi">
+    <span class="tag">Contatti</span>
+    <h2 class="section-title">Iniziamo<br /><em>insieme.</em></h2>
+    <div class="divider"></div>
+    <p>Scrivimi per conoscere lezioni, pacchetti e disponibilità — ti rispondo personalmente entro 24 ore.</p>
+    <p>Puoi scegliere la sede di Prato o quella di Forte dei Marmi.</p>
+    <div class="prenota-contacts">
+      <div class="ci">
+        <span class="ci-label">Prato</span>
+        <span>Via Egisto Niccoli 5/6</span>
+      </div>
+      <div class="ci">
+        <span class="ci-label">Forte dei Marmi</span>
+        <span>Via G. Carducci 65</span>
+      </div>
+      <div class="ci">
+        <span class="ci-label">Email</span>
+        <a href="mailto:aurorapersonalpilates@gmail.com">aurorapersonalpilates@gmail.com</a>
+      </div>
+      <div class="ci">
+        <span class="ci-label">Telefono</span>
+        <a href="tel:+393513270453">351 327 0453</a>
+      </div>
+    </div>
+    <a href="https://wa.me/393513270453" target="_blank" rel="noopener" class="prenota-cta-wa">
+      Scrivimi su WhatsApp →
+    </a>
+  </div>
+  <form class="fi d1" id="contactForm" action="send.php" method="POST" novalidate>
+    <!-- Honeypot anti-spam: i bot lo compilano, gli umani no. Nascosto via CSS. -->
+    <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <div class="form-group">
+      <label for="nome">Nome e cognome</label>
+      <input type="text" id="nome" name="nome" placeholder="Il tuo nome" required />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="tua@email.com" required />
+    </div>
+    <div class="form-group">
+      <label for="sede">Sede preferita</label>
+      <select id="sede" name="sede">
+        <option value="">Scegli una sede</option>
+        <option>Prato — Via Egisto Niccoli</option>
+        <option>Forte dei Marmi — Via G. Carducci</option>
+        <option>Online</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="servizio">Servizio di interesse</label>
+      <select id="servizio" name="servizio">
+        <option value="">Scegli un servizio</option>
+        <option>Lezione privata individuale</option>
+        <option>Lezione in coppia</option>
+        <option>Piccolo gruppo (max 4 persone)</option>
+        <option>Barre (solo Prato)</option>
+        <option>Non so ancora</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="messaggio">Raccontami di te</label>
+      <textarea id="messaggio" name="messaggio" rows="4" placeholder="Obiettivi, eventuali problematiche fisiche, disponibilità oraria..."></textarea>
+    </div>
+    <button type="submit" class="btn-submit">Invia la richiesta</button>
+    <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+  </form>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="./img/logo_white.png" alt="Aurora Personal Pilates" class="footer-logo-img" />
+    </div>
+    <div class="footer-sedi">
+      <strong>Prato</strong>
+      Via Egisto Niccoli 5/6, Prato
+      <br />
+      <strong style="margin-top:.8rem">Forte dei Marmi</strong>
+      Via G. Carducci 65, Forte dei Marmi
+    </div>
+    <div class="footer-socials">
+      <!-- TODO: sostituire href con l'URL reale del profilo Instagram di Aurora -->
+      <a href="https://instagram.com/" target="_blank" rel="noopener" class="soc" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <!-- TODO: sostituire href con l'URL reale della pagina Facebook di Aurora -->
+      <a href="https://facebook.com/" target="_blank" rel="noopener" class="soc" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M14 9h2.5V6H14c-2 0-3.2 1.2-3.2 3.2V11H8.5v3h2.3v6h3v-6h2.3l.4-3h-2.7V9.6c0-.4.3-.6.9-.6z"/></svg>
+      </a>
+      <a href="https://wa.me/393513270453" target="_blank" rel="noopener" class="soc" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2zm0 2a8 8 0 0 1 6.6 12.5l-.3.4.6 2.2-2.3-.6-.4.2A8 8 0 1 1 12 4zm-3 4c-.2 0-.5 0-.7.4-.2.4-.9 1-.9 2.3 0 1.4 1 2.7 1.1 2.9.2.2 2 3.2 5 4.3 2.4 1 2.9.8 3.4.7.5 0 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.1l-.7.9c-.1.2-.3.2-.5.1-.7-.3-1.5-.6-2.4-1.5-.7-.6-1.1-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5H9z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Aurora Personal Pilates. Tutti i diritti riservati.</span>
+    <span>P.IVA 02833530302 &nbsp;·&nbsp; <a href="mailto:aurorapersonalpilates@gmail.com">aurorapersonalpilates@gmail.com</a></span>
+  </div>
+</footer>
+
+<script>
+  // Nav shrink
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), {passive:true});
+
+  // Hamburger
+  // Hamburger menu
+  const hb = document.getElementById('hamburger');
+  const nl = document.getElementById('navLinks');
+  function toggleMenu(force) {
+    const open = force !== undefined ? force : !nl.classList.contains('open');
+    nl.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    // animate hamburger spans → X
+    const spans = hb.querySelectorAll('span');
+    if(open){
+      spans[0].style.cssText = 'transform:translateY(6px) rotate(45deg)';
+      spans[1].style.cssText = 'opacity:0';
+      spans[2].style.cssText = 'transform:translateY(-6px) rotate(-45deg)';
+    } else {
+      spans.forEach(s => s.style.cssText = '');
+    }
+  }
+  hb.addEventListener('click', () => toggleMenu());
+  nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+  // close on outside tap
+  document.addEventListener('click', e => {
+    if(nl.classList.contains('open') && !nl.contains(e.target) && !hb.contains(e.target)) toggleMenu(false);
+  });
+
+  // Fade-in on scroll
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('v'); obs.unobserve(e.target); } });
+  }, {threshold:.1});
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+  // Form — invio reale a send.php
+  const form = document.getElementById('contactForm');
+  const statusEl = document.getElementById('formStatus');
+
+  function setStatus(msg, type){
+    statusEl.textContent = msg;
+    statusEl.className = 'form-status' + (type ? ' ' + type : '');
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const btn = this.querySelector('.btn-submit');
+
+    // Validazione minima lato client
+    const nome = this.nome.value.trim();
+    const email = this.email.value.trim();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if(!nome){ setStatus('Inserisci il tuo nome.', 'err'); this.nome.focus(); return; }
+    if(!emailOk){ setStatus('Inserisci un indirizzo email valido.', 'err'); this.email.focus(); return; }
+
+    const original = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Invio in corso…';
+    setStatus('', '');
+
+    try{
+      const res = await fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      });
+      let data = {};
+      try { data = await res.json(); } catch(_) {}
+
+      if(res.ok && data.ok){
+        setStatus('Richiesta inviata — ti risponderò personalmente entro 24 ore.', 'ok');
+        this.reset();
+      } else {
+        setStatus((data && data.error) || 'Qualcosa è andato storto. Riprova o scrivimi su WhatsApp.', 'err');
+      }
+    } catch(err){
+      setStatus('Errore di connessione. Riprova o scrivimi su WhatsApp.', 'err');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = original;
+    }
+  });
+</script>
+  <script async src="//www.instagram.com/embed.js"></script>
+</body>
+</html>

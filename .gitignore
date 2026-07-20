@@ -1,0 +1,13 @@
+# Credenziali reali del form — MAI su GitHub
+config.php
+
+# macOS
+.DS_Store
+._*
+
+# Editor
+.vscode/
+.idea/
+
+# Log
+*.log
