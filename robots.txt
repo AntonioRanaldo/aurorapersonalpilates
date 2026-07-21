@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /send.php
+Disallow: /lib/
+
+Sitemap: https://www.aurorapersonalpilates.it/sitemap.xml

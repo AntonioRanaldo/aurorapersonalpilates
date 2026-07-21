@@ -11,23 +11,22 @@
   <meta property="og:description" content="Pilates di alto livello. Ambienti esclusivi a Prato e Forte dei Marmi." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="it_IT" />
-  <!-- TODO: sostituire REPLACE_WITH_DOMAIN con il dominio reale (es. https://www.aurorapersonalpilates.it) dopo la pubblicazione su Aruba -->
-  <meta property="og:url" content="https://REPLACE_WITH_DOMAIN/" />
-  <meta property="og:image" content="https://REPLACE_WITH_DOMAIN/img/hero.jpg" />
+  <meta property="og:url" content="https://www.aurorapersonalpilates.it/" />
+  <meta property="og:image" content="https://www.aurorapersonalpilates.it/img/hero.jpg" />
+  <link rel="canonical" href="https://www.aurorapersonalpilates.it/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 
-  <!-- TODO: sostituire REPLACE_WITH_DOMAIN con il dominio reale dopo la pubblicazione su Aruba -->
   <script type="application/ld+json">
   [{
     "@context": "https://schema.org",
     "@type": "HealthAndBeautyBusiness",
     "name": "Aurora Personal Pilates",
     "description": "Studio di pilates esclusivo con lezioni individuali, in coppia e piccoli gruppi",
-    "image": "https://REPLACE_WITH_DOMAIN/img/hero.jpg",
-    "url": "https://REPLACE_WITH_DOMAIN/",
+    "image": "https://www.aurorapersonalpilates.it/img/hero.jpg",
+    "url": "https://www.aurorapersonalpilates.it/",
     "telephone": "+39 351 327 0453",
     "email": "aurorapersonalpilates@gmail.com",
     "priceRange": "€€€",
@@ -37,8 +36,8 @@
     "@type": "HealthAndBeautyBusiness",
     "name": "Aurora Forte Club — Aurora Personal Pilates",
     "description": "Studio privato di pilates a Forte dei Marmi",
-    "image": "https://REPLACE_WITH_DOMAIN/img/fdm_studio1.jpg",
-    "url": "https://REPLACE_WITH_DOMAIN/",
+    "image": "https://www.aurorapersonalpilates.it/img/fdm_studio1.jpg",
+    "url": "https://www.aurorapersonalpilates.it/",
     "telephone": "+39 351 327 0453",
     "email": "aurorapersonalpilates@gmail.com",
     "priceRange": "€€€",
@@ -871,73 +870,116 @@
 
     /* ── TABLET (≤960px) ── */
     @media(max-width:960px){
-      /* NAV */
+      /* NAV — overlay sopra la navbar */
       .nav-overlay{
         display:block;
         position:fixed;inset:0;
         background:rgba(0,0,0,.5);
         opacity:0;visibility:hidden;
         transition:opacity .3s ease-out,visibility .3s ease-out;
-        z-index:140;
+        z-index:250;
       }
       .nav-overlay.open{opacity:1;visibility:visible}
 
+      /* Pannello menù — sopra overlay E sopra navbar */
       .nav-links{
         display:flex;flex-direction:column;position:fixed;
         top:0;right:0;left:auto;bottom:0;
-        width:85%;
+        width:85%;max-width:360px;
         height:100dvh;max-height:100dvh;
         margin:0;
         background:#ffffff;
         color:var(--ink);
-        padding:6rem 1.75rem 2.5rem;
+        padding:1rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom));
         gap:0;
-        z-index:150;
+        z-index:260;
         overflow-y:auto;
         transform:translateX(100%);
         transition:transform .3s ease-out;
         pointer-events:none;
         box-shadow:-12px 0 30px rgba(0,0,0,.18);
+        text-align:center;
       }
       .nav-links.open{
         transform:translateX(0);
         pointer-events:auto;
       }
-      .nav-links li{border-bottom:1px solid rgba(172,155,126,.15)}
+
+      /* X di chiusura — in alto a destra DENTRO il pannello.
+         margin-bottom:auto + margin-top:auto sui contatti = voci centrate verticalmente */
+      .nav-close-wrap{
+        display:flex;justify-content:flex-end;
+        width:100%;
+        margin-bottom:auto;
+        padding-top:max(.25rem, env(safe-area-inset-top));
+      }
+      .nav-close{
+        width:44px;height:44px;
+        background:none;border:none;cursor:pointer;
+        position:relative;
+        -webkit-tap-highlight-color:transparent;
+      }
+      .nav-close span{
+        position:absolute;top:50%;left:50%;
+        width:22px;height:1.5px;background:var(--ink);
+        display:block;
+      }
+      .nav-close span:first-child{transform:translate(-50%,-50%) rotate(45deg)}
+      .nav-close span:last-child{transform:translate(-50%,-50%) rotate(-45deg)}
+
+      /* Voci — centrate, con divisore corto centrato */
+      .nav-links li{width:100%}
       .nav-links a{
-        display:flex;align-items:center;
+        display:flex;align-items:center;justify-content:center;
         min-height:44px;
-        padding:.85rem 0;
+        padding:.75rem 0;
         font-family:'Playfair Display',serif;
-        font-size:1.2rem;
+        font-size:1.25rem;
         letter-spacing:.01em;
         text-transform:none;
         color:var(--ink);
       }
+      .nav-links li:not(.nav-close-wrap):not(.nav-contact):not(.nav-cta-li):not(.lang-switch-li)::after{
+        content:'';display:block;
+        width:110px;height:1px;
+        margin:.1rem auto 0;
+        background:rgba(172,155,126,.35);
+      }
+
+      /* Bottone Prenota */
+      .nav-links li.nav-cta-li{margin-top:1.6rem}
+      .nav-links li.lang-switch-li{justify-content:center;margin-top:1.4rem}
+      .nav-links .lang-btn{font-size:.8rem}
       .nav-links .nav-cta{
         display:inline-flex;align-items:center;justify-content:center;
         min-height:44px;
-        margin-top:1.5rem;padding:.85rem 2rem;
+        margin:0 auto;padding:.85rem 2.4rem;
         border:1px solid var(--taupe);
         font-family:'Jost',sans-serif;
         font-size:.8rem;
         letter-spacing:.14em;
         text-transform:uppercase;
         color:var(--taupe-dark);
+        width:auto;
       }
+
+      /* Contatti — ancorati in fondo al pannello */
       .nav-links li.nav-contact{
-        border-bottom:none;border-top:1px solid rgba(172,155,126,.15);
-        margin-top:2rem;padding-top:1.5rem;
-        display:flex;flex-direction:column;gap:.5rem;
+        margin-top:auto;
+        border-top:1px solid rgba(172,155,126,.2);
+        padding-top:1.4rem;
+        display:flex;flex-direction:column;gap:.45rem;
       }
       .nav-links li.nav-contact a{
         font-family:'Jost',sans-serif;
         font-size:.85rem;letter-spacing:.03em;
-        min-height:auto;padding:.2rem 0;
+        min-height:auto;padding:.15rem 0;
         color:var(--ink-soft);
       }
-      body.menu-open .nav-logo{display:none}
+
+      /* Hamburger: visibile solo a menù chiuso (la X è dentro il pannello) */
       .hamburger{display:flex;z-index:200;position:relative}
+      body.menu-open .hamburger{opacity:0;pointer-events:none}
 
       /* HERO */
       .hero-content{padding:7rem 6% 4rem;max-width:100%}
@@ -963,6 +1005,7 @@
       /* CHI SONO */
       .about-img-accent{display:none}
       .about-img-main{aspect-ratio:3/2}
+      .about-img-main img{object-position:center 18%} /* mostra la testa: crop spostato verso l'alto */
       .about-content{padding-right:0}
 
       /* FOOTER */
@@ -1050,8 +1093,76 @@
       .hero-content{padding:5.5rem 5% 3rem}
       .servizio-card{padding:1.5rem}
       .prezzo-card{padding:2rem 1.2rem}
-      .about-stats{flex-wrap:wrap;gap:1.2rem}
     }
+
+    /* X del menù: nascosta su desktop */
+    .nav-close-wrap{display:none}
+
+    /* Icone social PNG */
+    .soc img{width:20px;height:20px;object-fit:contain;display:block}
+
+    /* ── COOKIE BANNER ── */
+    .cookie-banner[hidden]{display:none!important} /* fix: display:flex vinceva sull'attributo hidden */
+    .cookie-banner{
+      position:fixed;left:0;right:0;bottom:0;z-index:400;
+      background:var(--ink);color:rgba(255,255,255,.85);
+      padding:1.1rem 5% calc(1.1rem + env(safe-area-inset-bottom));
+      display:flex;align-items:center;justify-content:space-between;
+      gap:1.5rem;flex-wrap:wrap;
+      box-shadow:0 -8px 30px rgba(0,0,0,.25);
+    }
+    .cookie-banner p{font-size:.82rem;font-weight:300;line-height:1.7;max-width:640px;margin:0}
+    .cookie-banner a{color:var(--linen);text-decoration:underline}
+    .cookie-actions{display:flex;gap:.7rem;flex-shrink:0}
+    .ck-btn{
+      font-family:'Jost',sans-serif;
+      font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+      padding:.65rem 1.4rem;cursor:pointer;
+      background:none;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.8);
+      transition:background .2s,color .2s,border-color .2s;
+    }
+    .ck-btn:hover{border-color:var(--linen);color:var(--linen)}
+    .ck-accept{background:var(--linen);border-color:var(--linen);color:var(--ink);font-weight:500}
+    .ck-accept:hover{background:var(--taupe);border-color:var(--taupe);color:var(--white)}
+    @media(max-width:640px){
+      .cookie-banner{flex-direction:column;align-items:stretch;text-align:center}
+      .cookie-actions{justify-content:center}
+    }
+
+    /* Nota consenso per i reel Instagram */
+    .reel-consent-note{
+      text-align:center;
+      font-size:.85rem;color:var(--ink-soft);font-weight:300;
+      margin:-2rem auto 3rem;max-width:520px;
+    }
+    .reel-consent-note button{
+      background:none;border:none;cursor:pointer;
+      color:var(--taupe-dark);text-decoration:underline;
+      font-family:'Jost',sans-serif;font-size:.85rem;
+    }
+
+    /* ── LANG SWITCHER ── */
+    .lang-switch-li{display:flex;align-items:center;gap:.45rem}
+    .lang-btn{
+      background:none;border:none;cursor:pointer;
+      font-family:'Jost',sans-serif;font-size:.72rem;
+      letter-spacing:.12em;color:var(--ink-soft);opacity:.55;
+      padding:.2rem .1rem;transition:opacity .2s,color .2s;
+    }
+    .lang-btn:hover{opacity:1}
+    .lang-btn.active{opacity:1;color:var(--taupe-dark);border-bottom:1px solid var(--taupe)}
+    .lang-sep{color:var(--linen);font-size:.7rem}
+
+    /* ── SEDE MAPS LINK ── */
+    .sede-maps{
+      margin-top:.6rem;
+      font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+      color:var(--linen);font-weight:400;
+      border-bottom:1px solid rgba(205,193,171,.4);
+      padding-bottom:.1rem;align-self:flex-start;
+      transition:color .2s,border-color .2s;
+    }
+    .sede-maps:hover{color:var(--white);border-color:var(--white)}
   </style>
 </head>
 <body>
@@ -1062,12 +1173,20 @@
     <img src="./img/logo_dark.png" alt="Aurora Personal Pilates" class="nav-logo-img" />
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#chi-sono">Chi sono</a></li>
-    <li><a href="#servizi">Servizi</a></li>
-    <li><a href="#sedi">Sedi</a></li>
+    <li class="nav-close-wrap">
+      <button type="button" class="nav-close" id="navClose" aria-label="Chiudi il menu">
+        <span></span><span></span>
+      </button>
+    </li>
+    <li><a href="#chi-sono" data-i18n="nav_about">Chi sono</a></li>
+    <li><a href="#servizi" data-i18n="nav_services">Servizi</a></li>
+    <li><a href="#sedi" data-i18n="nav_locations">Sedi</a></li>
     <li><a href="#forte-dei-marmi">Aurora Forte Club</a></li>
-    <li><a href="#testimonianze">Recensioni</a></li>
-    <li><a href="#prenota" class="nav-cta">Prenota</a></li>
+    <li><a href="#testimonianze" data-i18n="nav_reviews">Recensioni</a></li>
+    <li class="nav-cta-li"><a href="#prenota" class="nav-cta" data-i18n="nav_book">Prenota</a></li>
+    <li class="lang-switch-li" aria-label="Lingua">
+      <button type="button" class="lang-btn" data-lang="it">IT</button><span class="lang-sep">·</span><button type="button" class="lang-btn" data-lang="en">EN</button><span class="lang-sep">·</span><button type="button" class="lang-btn" data-lang="fr">FR</button><span class="lang-sep">·</span><button type="button" class="lang-btn" data-lang="es">ES</button>
+    </li>
     <li class="nav-contact">
       <a href="tel:+393513270453">+39 351 327 0453</a>
       <a href="mailto:aurorapersonalpilates@gmail.com">aurorapersonalpilates@gmail.com</a>
@@ -1090,12 +1209,12 @@
   <div class="hero-content">
     <span class="tag">Prato · Forte dei Marmi</span>
     <p class="hero-script">Aurora</p>
-    <h1>Il Pilates<br /><em>come non l'hai<br />mai vissuto.</em></h1>
+    <h1 data-i18n="hero_h1">Il Pilates<br /><em>come non l'hai<br />mai vissuto.</em></h1>
     <div class="divider"></div>
-    <p>Un'esperienza esclusiva, costruita su di te. Lezioni individuali e percorsi su misura in ambienti curati, per chi non si accontenta del classico.</p>
+    <p data-i18n="hero_p">Un'esperienza esclusiva, costruita su di te. Lezioni individuali e percorsi su misura in ambienti curati, per chi non si accontenta del classico.</p>
     <div>
-      <a href="#prenota" class="btn-gold">Prenota una sessione</a>
-      <a href="#servizi" class="btn-ghost">Scopri i servizi</a>
+      <a href="#prenota" class="btn-gold" data-i18n="hero_cta1">Prenota una sessione</a>
+      <a href="#servizi" class="btn-ghost" data-i18n="hero_cta2">Scopri i servizi</a>
     </div>
     <div class="hero-sedi">
       <div class="sede">
@@ -1103,7 +1222,7 @@
         Via Egisto Niccoli 5/6
       </div>
       <div class="sede" style="padding-left:2rem;border-left:1px solid rgba(172,155,126,.25)">
-        <strong>Forte dei Marmi <span style="font-size:.65rem;color:var(--taupe);letter-spacing:.1em">— NUOVO</span></strong>
+        <strong>Forte dei Marmi <span style="font-size:.65rem;color:var(--taupe);letter-spacing:.1em" data-i18n="hero_new">— NUOVO</span></strong>
         Via G. Carducci 65
       </div>
     </div>
@@ -1129,44 +1248,44 @@
     </div>
   </div>
   <div class="about-content fi d1">
-    <span class="tag">Chi sono</span>
-    <h2 class="section-title">Sono Aurora,<br /><em>trainer e fondatrice.</em></h2>
+    <span class="tag" data-i18n="about_tag">Chi sono</span>
+    <h2 class="section-title" data-i18n="about_title">Sono Aurora,<br /><em>trainer e fondatrice.</em></h2>
     <div class="divider"></div>
-    <p>Il mio percorso nasce oltre 10 anni fa, dal desiderio di trasformare il movimento in qualcosa di più profondo di un semplice allenamento: uno strumento per conoscersi, ritrovarsi e stare meglio nel proprio corpo.</p>
-    <p>Dopo anni di esperienza come personal trainer e l'apertura del mio primo centro a Prato, ho scelto di portare la mia visione anche a Forte dei Marmi, creando uno studio privato di Pilates dove attenzione, qualità e cura della persona sono al centro di ogni percorso.</p>
-    <p>Aurora Forte Club è il risultato di una storia fatta di determinazione, autenticità e scelte coraggiose. Un luogo pensato per chi cerca un'esperienza personalizzata, elegante e costruita su misura.</p>
-    <div class="about-script">Oltre 10 anni di passione.</div>
-    <a href="#prenota" class="btn-gold" style="margin-top:1.5rem">Prenota la tua lezione</a>
+    <p data-i18n="about_p1">Il mio percorso nasce oltre 10 anni fa, dal desiderio di trasformare il movimento in qualcosa di più profondo di un semplice allenamento: uno strumento per conoscersi, ritrovarsi e stare meglio nel proprio corpo.</p>
+    <p data-i18n="about_p2">Dopo anni di esperienza come personal trainer e l'apertura del mio primo centro a Prato, ho scelto di portare la mia visione anche a Forte dei Marmi, creando uno studio privato di Pilates dove attenzione, qualità e cura della persona sono al centro di ogni percorso.</p>
+    <p data-i18n="about_p3">Aurora Forte Club è il risultato di una storia fatta di determinazione, autenticità e scelte coraggiose. Un luogo pensato per chi cerca un'esperienza personalizzata, elegante e costruita su misura.</p>
+    <div class="about-script" data-i18n="about_script">Oltre 10 anni di passione.</div>
+    <a href="#prenota" class="btn-gold" style="margin-top:1.5rem" data-i18n="about_cta">Prenota la tua lezione</a>
   </div>
 </section>
 
 <!-- ── SERVIZI ── -->
 <section id="servizi">
   <div class="section-header fi">
-    <span class="tag">Cosa offro</span>
-    <h2 class="section-title">I servizi</h2>
+    <span class="tag" data-i18n="serv_tag">Cosa offro</span>
+    <h2 class="section-title" data-i18n="serv_title">I servizi</h2>
     <div class="divider"></div>
   </div>
   <div class="servizi-grid">
     <div class="servizio-card fi">
       <div class="serv-num">01</div>
-      <h3>Lezione individuale</h3>
-      <p>Un'ora dedicata esclusivamente a te. Programma costruito sulle tue esigenze, costantemente aggiornato sessione dopo sessione. Il massimo dell'efficacia e della personalizzazione.</p>
+      <h3 data-i18n="serv1_h">Lezione individuale</h3>
+      <p data-i18n="serv1_p">Un'ora dedicata esclusivamente a te. Programma costruito sulle tue esigenze, costantemente aggiornato sessione dopo sessione. Il massimo dell'efficacia e della personalizzazione.</p>
     </div>
     <div class="servizio-card fi d1">
       <div class="serv-num">02</div>
-      <h3>Lezione in coppia</h3>
-      <p>Condividi l'esperienza con una persona scelta da te — un'amica, il tuo partner. La cura rimane personalizzata su entrambe, con la motivazione in più di allenarsi insieme.</p>
+      <h3 data-i18n="serv2_h">Lezione in coppia</h3>
+      <p data-i18n="serv2_p">Condividi l'esperienza con una persona scelta da te — un'amica, il tuo partner. La cura rimane personalizzata su entrambe, con la motivazione in più di allenarsi insieme.</p>
     </div>
     <div class="servizio-card fi d2">
       <div class="serv-num">03</div>
-      <h3>Piccolo gruppo <span style="font-size:.75rem;color:var(--taupe);font-family:'Jost',sans-serif;font-weight:300">(max 4 persone)</span></h3>
-      <p>Un formato esclusivo che mantiene l'attenzione individuale pur condividendo l'energia del gruppo. Lezioni programmate con ritmo fisso, per un percorso costante e motivante.</p>
+      <h3><span data-i18n="serv3_h">Piccolo gruppo</span> <span style="font-size:.75rem;color:var(--taupe);font-family:'Jost',sans-serif;font-weight:300" data-i18n="serv3_max">(max 4 persone)</span></h3>
+      <p data-i18n="serv3_p">Un formato esclusivo che mantiene l'attenzione individuale pur condividendo l'energia del gruppo. Lezioni programmate con ritmo fisso, per un percorso costante e motivante.</p>
     </div>
     <div class="servizio-card fi d3">
       <div class="serv-num">04</div>
-      <h3>Percorso specializzato</h3>
-      <p>Post-riabilitazione, gravidanza e post-parto, rieducazione posturale. Programmi studiati in ogni dettaglio per esigenze specifiche, con la stessa cura di ogni altra sessione.</p>
+      <h3 data-i18n="serv4_h">Percorso specializzato</h3>
+      <p data-i18n="serv4_p">Post-riabilitazione, gravidanza e post-parto, rieducazione posturale. Programmi studiati in ogni dettaglio per esigenze specifiche, con la stessa cura di ogni altra sessione.</p>
     </div>
   </div>
 </section>
@@ -1174,25 +1293,25 @@
 <!-- ── COME FUNZIONA ── -->
 <section id="come-funziona">
   <div class="section-header center fi">
-    <span class="tag">Il percorso</span>
-    <h2 class="section-title">Come funziona</h2>
+    <span class="tag" data-i18n="steps_tag">Il percorso</span>
+    <h2 class="section-title" data-i18n="steps_title">Come funziona</h2>
     <div class="divider divider--center"></div>
   </div>
   <div class="steps">
     <div class="step fi">
       <div class="step-num">I</div>
-      <h3>Prima sessione conoscitiva</h3>
-      <p>Un incontro per capire la tua storia, i tuoi obiettivi e ciò che vuoi cambiare. Con tutta l'attenzione e la cura che meriti.</p>
+      <h3 data-i18n="step1_h">Prima sessione conoscitiva</h3>
+      <p data-i18n="step1_p">Un incontro per capire la tua storia, i tuoi obiettivi e ciò che vuoi cambiare. Con tutta l'attenzione e la cura che meriti.</p>
     </div>
     <div class="step fi d1">
       <div class="step-num">II</div>
-      <h3>Prima sessione</h3>
-      <p>Valutiamo insieme postura, mobilità e punti di forza. Cominciamo a muoverci con consapevolezza, costruendo le basi del tuo percorso.</p>
+      <h3 data-i18n="step2_h">Prima sessione</h3>
+      <p data-i18n="step2_p">Valutiamo insieme postura, mobilità e punti di forza. Cominciamo a muoverci con consapevolezza, costruendo le basi del tuo percorso.</p>
     </div>
     <div class="step fi d2">
       <div class="step-num">III</div>
-      <h3>Percorso su misura</h3>
-      <p>Un programma che evolve con te, settimana dopo settimana. Nessuna lezione uguale all'altra. Solo progresso reale.</p>
+      <h3 data-i18n="step3_h">Percorso su misura</h3>
+      <p data-i18n="step3_p">Un programma che evolve con te, settimana dopo settimana. Nessuna lezione uguale all'altra. Solo progresso reale.</p>
     </div>
   </div>
 </section>
@@ -1209,6 +1328,7 @@
       <span class="sede-tag">Aurora Personal Pilates</span>
       <div class="sede-name">Prato</div>
       <div class="sede-address">Via Egisto Niccoli 5/6</div>
+      <a class="sede-maps" href="https://www.google.com/maps/search/?api=1&query=Aurora%20Personal%20Pilates%20Via%20Egisto%20Niccoli%205%2F6%20Prato" target="_blank" rel="noopener" data-i18n="sede_maps">Indicazioni →</a>
     </div>
   </div>
   <div class="sede-card">
@@ -1221,6 +1341,7 @@
       <span class="sede-tag">Aurora Forte Club</span>
       <div class="sede-name">Forte dei Marmi</div>
       <div class="sede-address">Via G. Carducci 65</div>
+      <a class="sede-maps" href="https://www.google.com/maps/search/?api=1&query=Aurora%20Forte%20Club%20Via%20Carducci%2065%20Forte%20dei%20Marmi" target="_blank" rel="noopener" data-i18n="sede_maps">Indicazioni →</a>
     </div>
   </div>
 </section>
@@ -1270,10 +1391,10 @@
     <div class="fdm-logo-wrap">
       <img src="./img/logo_fdm_tondo.png" alt="Aurora Forte Club" class="fdm-logo-img" onerror="this.style.display='none'" />
     </div>
-    <span class="tag">Nuovo Studio · 2025</span>
+    <span class="tag" data-i18n="fdm_tag">Nuovo Studio · 2025</span>
     <h2 class="section-title fdm-title">Aurora<br /><em>Forte Club</em></h2>
     <div class="divider divider--center"></div>
-    <p class="fdm-sub">Uno spazio esclusivo nel cuore di Forte dei Marmi. Soffitti drappeggiati, luce naturale, specchi ovali in oro e macchinari di alta gamma. Un'esperienza sensoriale oltre che fisica.</p>
+    <p class="fdm-sub" data-i18n="fdm_sub">Uno spazio esclusivo nel cuore di Forte dei Marmi. Soffitti drappeggiati, luce naturale, specchi ovali in oro e macchinari di alta gamma. Un'esperienza sensoriale oltre che fisica.</p>
     <p class="fdm-address-line">
       <span>Via G. Carducci 65 · Forte dei Marmi</span>
     </p>
@@ -1304,7 +1425,7 @@
 
   <!-- CTA -->
   <div class="fdm-cta fi">
-    <a href="#prenota" class="btn-gold">Prenota a Forte dei Marmi</a>
+    <a href="#prenota" class="btn-gold" data-i18n="fdm_cta">Prenota a Forte dei Marmi</a>
   </div>
 
 </section>
@@ -1312,8 +1433,8 @@
 <!-- ── TESTIMONIANZE ── -->
 <section id="testimonianze">
   <div class="section-header fi">
-    <span class="tag">Recensioni</span>
-    <h2 class="section-title">Le parole<br /><em>delle nostre clienti</em></h2>
+    <span class="tag" data-i18n="testi_tag">Recensioni</span>
+    <h2 class="section-title" data-i18n="testi_title">Le parole<br /><em>delle nostre clienti</em></h2>
     <div class="divider"></div>
   </div>
   <!-- Reel video testimonial -->
@@ -1324,7 +1445,7 @@
         data-instgrm-permalink="https://www.instagram.com/reel/DaC5xvat4EI/?igsh=bjl3aXZrejg2OWkz"
         data-instgrm-version="14"
         style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:1px;padding:0;width:calc(100% - 2px)">
-        <a href="https://www.instagram.com/reel/DaC5xvat4EI/?igsh=bjl3aXZrejg2OWkz" target="_blank" rel="noopener">Guarda la recensione su Instagram</a>
+        <a href="https://www.instagram.com/reel/DaC5xvat4EI/?igsh=bjl3aXZrejg2OWkz" target="_blank" rel="noopener" data-i18n="reel_link">Guarda la recensione su Instagram</a>
       </blockquote>
     </div>
     <div class="reel-wrap">
@@ -1333,10 +1454,14 @@
         data-instgrm-permalink="https://www.instagram.com/reel/DX6Zkr4NiP6/?igsh=djFqNGswcjJ5dWZr"
         data-instgrm-version="14"
         style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:1px;padding:0;width:calc(100% - 2px)">
-        <a href="https://www.instagram.com/reel/DX6Zkr4NiP6/?igsh=djFqNGswcjJ5dWZr" target="_blank" rel="noopener">Guarda la recensione su Instagram</a>
+        <a href="https://www.instagram.com/reel/DX6Zkr4NiP6/?igsh=djFqNGswcjJ5dWZr" target="_blank" rel="noopener" data-i18n="reel_link">Guarda la recensione su Instagram</a>
       </blockquote>
     </div>
   </div>
+  <p class="reel-consent-note" id="reelConsentNote" style="display:none">
+    <span data-i18n="reel_note">Le anteprime dei video Instagram si caricano solo con il tuo consenso ai cookie di terze parti.</span>
+    <button type="button" data-i18n="reel_note_btn">Accetta e mostra i video</button>
+  </p>
 
   <div class="testi-grid">
     <div class="testi-card fi">
@@ -1344,7 +1469,7 @@
       <blockquote>"Aurora è estremamente attenta, precisa e ti segue davvero in ogni esercizio. Ambiente curato, tranquillo e professionale. Ho notato miglioramenti concreti su postura e controllo del corpo. Non è il classico pilates: è un lavoro su misura, di livello decisamente più alto. Consigliato a chi cerca qualità vera."</blockquote>
       <div class="testi-author">
         <strong>Elisabetta S.</strong>
-        <span>Cliente Aurora Personal Pilates</span>
+        <span data-i18n="testi_role1">Cliente Aurora Personal Pilates</span>
         <em class="testi-script">Elisabetta S.</em>
       </div>
     </div>
@@ -1353,7 +1478,7 @@
       <blockquote>"Ho iniziato con Aurora dopo anni di mal di schiena cronico. In pochi mesi il dolore è quasi scomparso. Un percorso che ha trasformato il mio rapporto con il corpo. Lo studio è un ambiente di rara cura e quiete."</blockquote>
       <div class="testi-author">
         <strong>Martina R.</strong>
-        <span>Cliente da 2 anni</span>
+        <span data-i18n="testi_role2">Cliente da 2 anni</span>
         <em class="testi-script">Martina R.</em>
       </div>
     </div>
@@ -1362,7 +1487,7 @@
       <blockquote>"Ho seguito il percorso in gravidanza e post-parto. Aurora conosce il corpo femminile in modo profondo. Mi sono sempre sentita in mani sicure, in un ambiente che non avevo trovato altrove."</blockquote>
       <div class="testi-author">
         <strong>Sara T.</strong>
-        <span>Cliente — Forte dei Marmi</span>
+        <span data-i18n="testi_role3">Cliente — Forte dei Marmi</span>
         <em class="testi-script">Sara T.</em>
       </div>
     </div>
@@ -1372,44 +1497,44 @@
 <!-- ── PREZZI ── -->
 <section id="prezzi">
   <div class="section-header center fi">
-    <span class="tag">Lezioni &amp; Pacchetti</span>
-    <h2 class="section-title">Scegli<br /><em>il tuo percorso</em></h2>
+    <span class="tag" data-i18n="prezzi_tag">Lezioni &amp; Pacchetti</span>
+    <h2 class="section-title" data-i18n="prezzi_title">Scegli<br /><em>il tuo percorso</em></h2>
     <div class="divider divider--center"></div>
-    <p style="font-size:.88rem;color:var(--ink-soft);font-weight:300;max-width:520px;margin:0 auto">Ogni percorso è costruito su misura. Contattami per conoscere le opzioni disponibili e trovare insieme la soluzione più adatta a te.</p>
+    <p style="font-size:.88rem;color:var(--ink-soft);font-weight:300;max-width:520px;margin:0 auto" data-i18n="prezzi_intro">Ogni percorso è costruito su misura. Contattami per conoscere le opzioni disponibili e trovare insieme la soluzione più adatta a te.</p>
   </div>
   <div class="prezzi-grid">
     <div class="prezzo-card fi">
-      <h3>Lezione privata</h3>
-      <p class="prezzo-desc">Individuale · 60 min</p>
+      <h3 data-i18n="pz1_h">Lezione privata</h3>
+      <p class="prezzo-desc" data-i18n="pz1_d">Individuale · 60 min</p>
       <ul class="prezzo-list">
-        <li>Attenzione esclusiva</li>
-        <li>Programma personalizzato</li>
-        <li>Progressione costante</li>
-        <li>Disponibile a Prato e Forte dei Marmi</li>
+        <li data-i18n="pz1_l1">Attenzione esclusiva</li>
+        <li data-i18n="pz1_l2">Programma personalizzato</li>
+        <li data-i18n="pz1_l3">Progressione costante</li>
+        <li data-i18n="pz_both">Disponibile a Prato e Forte dei Marmi</li>
       </ul>
-      <a href="#prenota" class="btn-prezzo">Richiedi info</a>
+      <a href="#prenota" class="btn-prezzo" data-i18n="pz_btn">Richiedi info</a>
     </div>
     <div class="prezzo-card featured fi d1">
-      <h3>Lezione in coppia</h3>
-      <p class="prezzo-desc">2 persone · 60 min</p>
+      <h3 data-i18n="pz2_h">Lezione in coppia</h3>
+      <p class="prezzo-desc" data-i18n="pz2_d">2 persone · 60 min</p>
       <ul class="prezzo-list">
-        <li>Cura personalizzata su entrambe</li>
-        <li>Motivazione condivisa</li>
-        <li>Programma adattato in duo</li>
-        <li>Disponibile a Prato e Forte dei Marmi</li>
+        <li data-i18n="pz2_l1">Cura personalizzata su entrambe</li>
+        <li data-i18n="pz2_l2">Motivazione condivisa</li>
+        <li data-i18n="pz2_l3">Programma adattato in duo</li>
+        <li data-i18n="pz_both">Disponibile a Prato e Forte dei Marmi</li>
       </ul>
-      <a href="#prenota" class="btn-prezzo">Richiedi info</a>
+      <a href="#prenota" class="btn-prezzo" data-i18n="pz_btn">Richiedi info</a>
     </div>
     <div class="prezzo-card fi d2">
-      <h3>Piccolo gruppo</h3>
-      <p class="prezzo-desc">Max 4 persone · 60 min</p>
+      <h3 data-i18n="pz3_h">Piccolo gruppo</h3>
+      <p class="prezzo-desc" data-i18n="pz3_d">Max 4 persone · 60 min</p>
       <ul class="prezzo-list">
-        <li>Attenzione individuale nel gruppo</li>
-        <li>Energia collettiva</li>
-        <li>Ritmo fisso e costante</li>
-        <li>Barre disponibile a Prato</li>
+        <li data-i18n="pz3_l1">Attenzione individuale nel gruppo</li>
+        <li data-i18n="pz3_l2">Energia collettiva</li>
+        <li data-i18n="pz3_l3">Ritmo fisso e costante</li>
+        <li data-i18n="pz3_l4">Barre disponibile a Prato</li>
       </ul>
-      <a href="#prenota" class="btn-prezzo">Richiedi info</a>
+      <a href="#prenota" class="btn-prezzo" data-i18n="pz_btn">Richiedi info</a>
     </div>
   </div>
 </section>
@@ -1417,11 +1542,11 @@
 <!-- ── PRENOTA ── -->
 <section id="prenota">
   <div class="prenota-info fi">
-    <span class="tag">Contatti</span>
-    <h2 class="section-title">Iniziamo<br /><em>insieme.</em></h2>
+    <span class="tag" data-i18n="pren_tag">Contatti</span>
+    <h2 class="section-title" data-i18n="pren_title">Iniziamo<br /><em>insieme.</em></h2>
     <div class="divider"></div>
-    <p>Scrivimi per conoscere lezioni, pacchetti e disponibilità — ti rispondo personalmente entro 24 ore.</p>
-    <p>Puoi scegliere la sede di Prato o quella di Forte dei Marmi.</p>
+    <p data-i18n="pren_p1">Scrivimi per conoscere lezioni, pacchetti e disponibilità — ti rispondo personalmente entro 24 ore.</p>
+    <p data-i18n="pren_p2">Puoi scegliere la sede di Prato o quella di Forte dei Marmi.</p>
     <div class="prenota-contacts">
       <div class="ci">
         <span class="ci-label">Prato</span>
@@ -1436,50 +1561,50 @@
         <a href="mailto:aurorapersonalpilates@gmail.com">aurorapersonalpilates@gmail.com</a>
       </div>
       <div class="ci">
-        <span class="ci-label">Telefono</span>
+        <span class="ci-label" data-i18n="pren_tel">Telefono</span>
         <a href="tel:+393513270453">351 327 0453</a>
       </div>
     </div>
     <a href="https://wa.me/393513270453" target="_blank" rel="noopener" class="prenota-cta-wa">
-      Scrivimi su WhatsApp →
+      <span data-i18n="pren_wa">Scrivimi su WhatsApp →</span>
     </a>
   </div>
   <form class="fi d1" id="contactForm" action="send.php" method="POST" novalidate>
     <!-- Honeypot anti-spam: i bot lo compilano, gli umani no. Nascosto via CSS. -->
     <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
     <div class="form-group">
-      <label for="nome">Nome e cognome</label>
-      <input type="text" id="nome" name="nome" placeholder="Il tuo nome" required />
+      <label for="nome" data-i18n="f_name">Nome e cognome</label>
+      <input type="text" id="nome" name="nome" placeholder="Il tuo nome" data-i18n-ph="f_name_ph" required />
     </div>
     <div class="form-group">
       <label for="email">Email</label>
       <input type="email" id="email" name="email" placeholder="tua@email.com" required />
     </div>
     <div class="form-group">
-      <label for="sede">Sede preferita</label>
+      <label for="sede" data-i18n="f_sede">Sede preferita</label>
       <select id="sede" name="sede">
-        <option value="">Scegli una sede</option>
+        <option value="" data-i18n="f_sede_ph">Scegli una sede</option>
         <option>Prato — Via Egisto Niccoli</option>
         <option>Forte dei Marmi — Via G. Carducci</option>
         <option>Online</option>
       </select>
     </div>
     <div class="form-group">
-      <label for="servizio">Servizio di interesse</label>
+      <label for="servizio" data-i18n="f_serv">Servizio di interesse</label>
       <select id="servizio" name="servizio">
-        <option value="">Scegli un servizio</option>
-        <option>Lezione privata individuale</option>
-        <option>Lezione in coppia</option>
-        <option>Piccolo gruppo (max 4 persone)</option>
-        <option>Barre (solo Prato)</option>
-        <option>Non so ancora</option>
+        <option value="" data-i18n="f_serv_ph">Scegli un servizio</option>
+        <option data-i18n="f_o1">Lezione privata individuale</option>
+        <option data-i18n="f_o2">Lezione in coppia</option>
+        <option data-i18n="f_o3">Piccolo gruppo (max 4 persone)</option>
+        <option data-i18n="f_o4">Barre (solo Prato)</option>
+        <option data-i18n="f_o5">Non so ancora</option>
       </select>
     </div>
     <div class="form-group">
-      <label for="messaggio">Raccontami di te</label>
-      <textarea id="messaggio" name="messaggio" rows="4" placeholder="Obiettivi, eventuali problematiche fisiche, disponibilità oraria..."></textarea>
+      <label for="messaggio" data-i18n="f_msg">Raccontami di te</label>
+      <textarea id="messaggio" name="messaggio" rows="4" placeholder="Obiettivi, eventuali problematiche fisiche, disponibilità oraria..." data-i18n-ph="f_msg_ph"></textarea>
     </div>
-    <button type="submit" class="btn-submit">Invia la richiesta</button>
+    <button type="submit" class="btn-submit" data-i18n="f_submit">Invia la richiesta</button>
     <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
   </form>
 </section>
@@ -1499,60 +1624,405 @@
     </div>
     <div class="footer-socials">
       <a href="https://www.instagram.com/aurorapersonalpilates/" target="_blank" rel="noopener" class="soc" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.501"/></svg>
+        <img src="./img/social/instagram.png" alt="Instagram" width="20" height="20" loading="lazy" />
       </a>
       <a href="https://www.facebook.com/p/Aurora-Faccio-61577972940985/" target="_blank" rel="noopener" class="soc" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M14 9h2.5V6H14c-2 0-3.2 1.2-3.2 3.2V11H8.5v3h2.3v6h3v-6h2.3l.4-3h-2.7V9.6c0-.4.3-.6.9-.6z"/></svg>
+        <img src="./img/social/facebook.png" alt="Facebook" width="20" height="20" loading="lazy" />
       </a>
       <a href="https://wa.me/393513270453" target="_blank" rel="noopener" class="soc" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2zm0 2a8 8 0 0 1 6.6 12.5l-.3.4.6 2.2-2.3-.6-.4.2A8 8 0 1 1 12 4zm-3 4c-.2 0-.5 0-.7.4-.2.4-.9 1-.9 2.3 0 1.4 1 2.7 1.1 2.9.2.2 2 3.2 5 4.3 2.4 1 2.9.8 3.4.7.5 0 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.1l-.7.9c-.1.2-.3.2-.5.1-.7-.3-1.5-.6-2.4-1.5-.7-.6-1.1-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5H9z"/></svg>
+        <img src="./img/social/whatsapp.png" alt="WhatsApp" width="20" height="20" loading="lazy" />
       </a>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Aurora Personal Pilates. Tutti i diritti riservati.</span>
-    <span>P.IVA 02833530302 &nbsp;·&nbsp; <a href="mailto:aurorapersonalpilates@gmail.com">aurorapersonalpilates@gmail.com</a></span>
+    <span data-i18n="ft_rights">© 2026 Aurora Personal Pilates. Tutti i diritti riservati.</span>
+    <span>
+      <a href="privacy-policy.html">Privacy &amp; Cookie Policy</a>
+      &nbsp;·&nbsp; P.IVA 02833530302
+      &nbsp;·&nbsp; <a href="mailto:aurorapersonalpilates@gmail.com">aurorapersonalpilates@gmail.com</a>
+    </span>
   </div>
 </footer>
+
+<!-- ── COOKIE BANNER ── -->
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <p><span data-i18n="ck_text">Questo sito usa solo strumenti tecnici necessari. Previo tuo consenso, carica anche contenuti di terze parti (video Instagram) che possono impostare cookie.</span> <a href="privacy-policy.html">Privacy &amp; Cookie Policy</a></p>
+  <div class="cookie-actions">
+    <button type="button" id="ckNecessary" class="ck-btn" data-i18n="ck_nec">Solo necessari</button>
+    <button type="button" id="ckAccept" class="ck-btn ck-accept" data-i18n="ck_acc">Accetta tutti</button>
+  </div>
+</div>
 
 <script>
   // Nav shrink
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), {passive:true});
 
-  // Hamburger
   // Hamburger menu
   const hb = document.getElementById('hamburger');
   const nl = document.getElementById('navLinks');
   const navOverlay = document.getElementById('navOverlay');
+  const navClose = document.getElementById('navClose');
   function toggleMenu(force) {
     const open = force !== undefined ? force : !nl.classList.contains('open');
     nl.classList.toggle('open', open);
     navOverlay.classList.toggle('open', open);
     document.body.classList.toggle('menu-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
-    // animate hamburger spans → X
-    const spans = hb.querySelectorAll('span');
-    if(open){
-      spans[0].style.cssText = 'transform:translateY(6px) rotate(45deg)';
-      spans[1].style.cssText = 'opacity:0';
-      spans[2].style.cssText = 'transform:translateY(-6px) rotate(-45deg)';
-    } else {
-      spans.forEach(s => s.style.cssText = '');
-    }
   }
-  hb.addEventListener('click', () => toggleMenu());
+  hb.addEventListener('click', () => toggleMenu(true));
+  navClose.addEventListener('click', () => toggleMenu(false));
+  navOverlay.addEventListener('click', () => toggleMenu(false));
   nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
-  // close on outside tap
-  document.addEventListener('click', e => {
-    if(nl.classList.contains('open') && !nl.contains(e.target) && !hb.contains(e.target)) toggleMenu(false);
-  });
 
   // Fade-in on scroll
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('v'); obs.unobserve(e.target); } });
   }, {threshold:.1});
   document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+  // ── Cookie consent ──
+  // 'all' = anche contenuti terze parti (Instagram) · 'necessary' = solo tecnici
+  const CONSENT_KEY = 'aurora-consent';
+  const banner = document.getElementById('cookieBanner');
+  const reelNote = document.getElementById('reelConsentNote');
+
+  function loadInstagramEmbed(){
+    if(document.getElementById('igEmbedJs')) return;
+    const s = document.createElement('script');
+    s.id = 'igEmbedJs';
+    s.async = true;
+    s.src = 'https://www.instagram.com/embed.js';
+    document.body.appendChild(s);
+    if(reelNote) reelNote.style.display = 'none';
+  }
+
+  function setConsent(value){
+    try { localStorage.setItem(CONSENT_KEY, value); } catch(_){}
+    banner.hidden = true;
+    if(value === 'all') loadInstagramEmbed();
+  }
+
+  let consent = null;
+  try { consent = localStorage.getItem(CONSENT_KEY); } catch(_){}
+
+  if(!consent){
+    banner.hidden = false;
+    if(reelNote) reelNote.style.display = 'block';
+  } else if(consent === 'all'){
+    loadInstagramEmbed();
+  } else {
+    if(reelNote) reelNote.style.display = 'block';
+  }
+
+  document.getElementById('ckAccept').addEventListener('click', () => setConsent('all'));
+  document.getElementById('ckNecessary').addEventListener('click', () => setConsent('necessary'));
+  if(reelNote){
+    reelNote.querySelector('button').addEventListener('click', () => setConsent('all'));
+  }
+
+  // ══════════════ TRADUZIONI (IT / EN / FR / ES) ══════════════
+  const I18N = {
+  it: {
+    nav_about:"Chi sono", nav_services:"Servizi", nav_locations:"Sedi", nav_reviews:"Recensioni", nav_book:"Prenota",
+    hero_h1:"Il Pilates<br /><em>come non l'hai<br />mai vissuto.</em>",
+    hero_p:"Un'esperienza esclusiva, costruita su di te. Lezioni individuali e percorsi su misura in ambienti curati, per chi non si accontenta del classico.",
+    hero_cta1:"Prenota una sessione", hero_cta2:"Scopri i servizi", hero_new:"— NUOVO",
+    about_tag:"Chi sono",
+    about_title:"Sono Aurora,<br /><em>trainer e fondatrice.</em>",
+    about_p1:"Il mio percorso nasce oltre 10 anni fa, dal desiderio di trasformare il movimento in qualcosa di più profondo di un semplice allenamento: uno strumento per conoscersi, ritrovarsi e stare meglio nel proprio corpo.",
+    about_p2:"Dopo anni di esperienza come personal trainer e l'apertura del mio primo centro a Prato, ho scelto di portare la mia visione anche a Forte dei Marmi, creando uno studio privato di Pilates dove attenzione, qualità e cura della persona sono al centro di ogni percorso.",
+    about_p3:"Aurora Forte Club è il risultato di una storia fatta di determinazione, autenticità e scelte coraggiose. Un luogo pensato per chi cerca un'esperienza personalizzata, elegante e costruita su misura.",
+    about_script:"Oltre 10 anni di passione.", about_cta:"Prenota la tua lezione",
+    serv_tag:"Cosa offro", serv_title:"I servizi",
+    serv1_h:"Lezione individuale",
+    serv1_p:"Un'ora dedicata esclusivamente a te. Programma costruito sulle tue esigenze, costantemente aggiornato sessione dopo sessione. Il massimo dell'efficacia e della personalizzazione.",
+    serv2_h:"Lezione in coppia",
+    serv2_p:"Condividi l'esperienza con una persona scelta da te — un'amica, il tuo partner. La cura rimane personalizzata su entrambe, con la motivazione in più di allenarsi insieme.",
+    serv3_h:"Piccolo gruppo", serv3_max:"(max 4 persone)",
+    serv3_p:"Un formato esclusivo che mantiene l'attenzione individuale pur condividendo l'energia del gruppo. Lezioni programmate con ritmo fisso, per un percorso costante e motivante.",
+    serv4_h:"Percorso specializzato",
+    serv4_p:"Post-riabilitazione, gravidanza e post-parto, rieducazione posturale. Programmi studiati in ogni dettaglio per esigenze specifiche, con la stessa cura di ogni altra sessione.",
+    steps_tag:"Il percorso", steps_title:"Come funziona",
+    step1_h:"Prima sessione conoscitiva",
+    step1_p:"Un incontro per capire la tua storia, i tuoi obiettivi e ciò che vuoi cambiare. Con tutta l'attenzione e la cura che meriti.",
+    step2_h:"Prima sessione",
+    step2_p:"Valutiamo insieme postura, mobilità e punti di forza. Cominciamo a muoverci con consapevolezza, costruendo le basi del tuo percorso.",
+    step3_h:"Percorso su misura",
+    step3_p:"Un programma che evolve con te, settimana dopo settimana. Nessuna lezione uguale all'altra. Solo progresso reale.",
+    fdm_tag:"Nuovo Studio · 2025",
+    fdm_sub:"Uno spazio esclusivo nel cuore di Forte dei Marmi. Soffitti drappeggiati, luce naturale, specchi ovali in oro e macchinari di alta gamma. Un'esperienza sensoriale oltre che fisica.",
+    fdm_cta:"Prenota a Forte dei Marmi",
+    testi_tag:"Recensioni", testi_title:"Le parole<br /><em>delle nostre clienti</em>",
+    testi_role1:"Cliente Aurora Personal Pilates", testi_role2:"Cliente da 2 anni", testi_role3:"Cliente — Forte dei Marmi",
+    reel_link:"Guarda la recensione su Instagram",
+    reel_note:"Le anteprime dei video Instagram si caricano solo con il tuo consenso ai cookie di terze parti.",
+    reel_note_btn:"Accetta e mostra i video",
+    prezzi_tag:"Lezioni &amp; Pacchetti", prezzi_title:"Scegli<br /><em>il tuo percorso</em>",
+    prezzi_intro:"Ogni percorso è costruito su misura. Contattami per conoscere le opzioni disponibili e trovare insieme la soluzione più adatta a te.",
+    pz1_h:"Lezione privata", pz1_d:"Individuale · 60 min",
+    pz1_l1:"Attenzione esclusiva", pz1_l2:"Programma personalizzato", pz1_l3:"Progressione costante",
+    pz_both:"Disponibile a Prato e Forte dei Marmi",
+    pz2_h:"Lezione in coppia", pz2_d:"2 persone · 60 min",
+    pz2_l1:"Cura personalizzata su entrambe", pz2_l2:"Motivazione condivisa", pz2_l3:"Programma adattato in duo",
+    pz3_h:"Piccolo gruppo", pz3_d:"Max 4 persone · 60 min",
+    pz3_l1:"Attenzione individuale nel gruppo", pz3_l2:"Energia collettiva", pz3_l3:"Ritmo fisso e costante", pz3_l4:"Barre disponibile a Prato",
+    pz_btn:"Richiedi info",
+    pren_tag:"Contatti", pren_title:"Iniziamo<br /><em>insieme.</em>",
+    pren_p1:"Scrivimi per conoscere lezioni, pacchetti e disponibilità — ti rispondo personalmente entro 24 ore.",
+    pren_p2:"Puoi scegliere la sede di Prato o quella di Forte dei Marmi.",
+    pren_tel:"Telefono", pren_wa:"Scrivimi su WhatsApp →",
+    f_name:"Nome e cognome", f_name_ph:"Il tuo nome",
+    f_sede:"Sede preferita", f_sede_ph:"Scegli una sede",
+    f_serv:"Servizio di interesse", f_serv_ph:"Scegli un servizio",
+    f_o1:"Lezione privata individuale", f_o2:"Lezione in coppia", f_o3:"Piccolo gruppo (max 4 persone)", f_o4:"Barre (solo Prato)", f_o5:"Non so ancora",
+    f_msg:"Raccontami di te", f_msg_ph:"Obiettivi, eventuali problematiche fisiche, disponibilità oraria...",
+    f_submit:"Invia la richiesta",
+    f_err_name:"Inserisci il tuo nome.", f_err_email:"Inserisci un indirizzo email valido.",
+    f_sending:"Invio in corso…",
+    f_ok:"Richiesta inviata — ti risponderò personalmente entro 24 ore.",
+    f_ko:"Qualcosa è andato storto. Riprova o scrivimi su WhatsApp.",
+    f_net:"Errore di connessione. Riprova o scrivimi su WhatsApp.",
+    ft_rights:"© 2026 Aurora Personal Pilates. Tutti i diritti riservati.",
+    ck_text:"Questo sito usa solo strumenti tecnici necessari. Previo tuo consenso, carica anche contenuti di terze parti (video Instagram) che possono impostare cookie.",
+    ck_nec:"Solo necessari", ck_acc:"Accetta tutti",
+    sede_maps:"Indicazioni →"
+  },
+  en: {
+    nav_about:"About me", nav_services:"Services", nav_locations:"Locations", nav_reviews:"Reviews", nav_book:"Book now",
+    hero_h1:"Pilates<br /><em>like you've never<br />experienced it.</em>",
+    hero_p:"An exclusive experience, built around you. One-to-one lessons and tailor-made programmes in refined spaces, for those who won't settle for the ordinary.",
+    hero_cta1:"Book a session", hero_cta2:"Discover the services", hero_new:"— NEW",
+    about_tag:"About me",
+    about_title:"I'm Aurora,<br /><em>trainer and founder.</em>",
+    about_p1:"My journey began over 10 years ago, from the desire to turn movement into something deeper than mere training: a tool to know yourself, find yourself again and feel better in your own body.",
+    about_p2:"After years of experience as a personal trainer and the opening of my first studio in Prato, I chose to bring my vision to Forte dei Marmi as well, creating a private Pilates studio where attention, quality and personal care are at the heart of every programme.",
+    about_p3:"Aurora Forte Club is the result of a story made of determination, authenticity and bold choices. A place designed for those seeking a personalised, elegant, truly bespoke experience.",
+    about_script:"Over 10 years of passion.", about_cta:"Book your lesson",
+    serv_tag:"What I offer", serv_title:"Services",
+    serv1_h:"One-to-one lesson",
+    serv1_p:"An hour dedicated exclusively to you. A programme built on your needs, constantly updated session after session. Maximum effectiveness and personalisation.",
+    serv2_h:"Duo lesson",
+    serv2_p:"Share the experience with someone you choose — a friend, your partner. The care stays personalised for both of you, with the extra motivation of training together.",
+    serv3_h:"Small group", serv3_max:"(max 4 people)",
+    serv3_p:"An exclusive format that keeps individual attention while sharing the group's energy. Scheduled lessons at a steady pace, for a consistent and motivating journey.",
+    serv4_h:"Specialised programme",
+    serv4_p:"Post-rehabilitation, pregnancy and postpartum, postural re-education. Programmes designed in every detail for specific needs, with the same care as every other session.",
+    steps_tag:"The journey", steps_title:"How it works",
+    step1_h:"Introductory meeting",
+    step1_p:"A meeting to understand your story, your goals and what you want to change. With all the attention and care you deserve.",
+    step2_h:"First session",
+    step2_p:"Together we assess posture, mobility and strengths. We start moving with awareness, building the foundations of your journey.",
+    step3_h:"Tailor-made programme",
+    step3_p:"A programme that evolves with you, week after week. No two lessons alike. Just real progress.",
+    fdm_tag:"New Studio · 2025",
+    fdm_sub:"An exclusive space in the heart of Forte dei Marmi. Draped ceilings, natural light, gold oval mirrors and top-of-the-range equipment. A sensory experience as much as a physical one.",
+    fdm_cta:"Book in Forte dei Marmi",
+    testi_tag:"Reviews", testi_title:"What our<br /><em>clients say</em>",
+    testi_role1:"Aurora Personal Pilates client", testi_role2:"Client for 2 years", testi_role3:"Client — Forte dei Marmi",
+    reel_link:"Watch the review on Instagram",
+    reel_note:"Instagram video previews load only with your consent to third-party cookies.",
+    reel_note_btn:"Accept and show videos",
+    prezzi_tag:"Lessons &amp; Packages", prezzi_title:"Choose<br /><em>your path</em>",
+    prezzi_intro:"Every programme is tailor-made. Contact me to learn about the available options and find the right solution for you together.",
+    pz1_h:"Private lesson", pz1_d:"One-to-one · 60 min",
+    pz1_l1:"Exclusive attention", pz1_l2:"Personalised programme", pz1_l3:"Steady progression",
+    pz_both:"Available in Prato and Forte dei Marmi",
+    pz2_h:"Duo lesson", pz2_d:"2 people · 60 min",
+    pz2_l1:"Personalised care for both", pz2_l2:"Shared motivation", pz2_l3:"Programme adapted as a duo",
+    pz3_h:"Small group", pz3_d:"Max 4 people · 60 min",
+    pz3_l1:"Individual attention within the group", pz3_l2:"Collective energy", pz3_l3:"Fixed, steady rhythm", pz3_l4:"Barre available in Prato",
+    pz_btn:"Request info",
+    pren_tag:"Contact", pren_title:"Let's start<br /><em>together.</em>",
+    pren_p1:"Write to me to learn about lessons, packages and availability — I'll reply personally within 24 hours.",
+    pren_p2:"You can choose the Prato studio or the Forte dei Marmi studio.",
+    pren_tel:"Phone", pren_wa:"Message me on WhatsApp →",
+    f_name:"Full name", f_name_ph:"Your name",
+    f_sede:"Preferred studio", f_sede_ph:"Choose a studio",
+    f_serv:"Service of interest", f_serv_ph:"Choose a service",
+    f_o1:"Private one-to-one lesson", f_o2:"Duo lesson", f_o3:"Small group (max 4 people)", f_o4:"Barre (Prato only)", f_o5:"Not sure yet",
+    f_msg:"Tell me about yourself", f_msg_ph:"Goals, any physical issues, time availability...",
+    f_submit:"Send request",
+    f_err_name:"Please enter your name.", f_err_email:"Please enter a valid email address.",
+    f_sending:"Sending…",
+    f_ok:"Request sent — I'll reply personally within 24 hours.",
+    f_ko:"Something went wrong. Try again or message me on WhatsApp.",
+    f_net:"Connection error. Try again or message me on WhatsApp.",
+    ft_rights:"© 2026 Aurora Personal Pilates. All rights reserved.",
+    ck_text:"This site uses only necessary technical tools. With your consent, it also loads third-party content (Instagram videos) that may set cookies.",
+    ck_nec:"Necessary only", ck_acc:"Accept all",
+    sede_maps:"Directions →"
+  },
+  fr: {
+    nav_about:"Qui suis-je", nav_services:"Services", nav_locations:"Studios", nav_reviews:"Avis", nav_book:"Réserver",
+    hero_h1:"Le Pilates<br /><em>comme vous ne l'avez<br />jamais vécu.</em>",
+    hero_p:"Une expérience exclusive, construite autour de vous. Des cours individuels et des parcours sur mesure dans des espaces raffinés, pour ceux qui ne se contentent pas du classique.",
+    hero_cta1:"Réserver une séance", hero_cta2:"Découvrir les services", hero_new:"— NOUVEAU",
+    about_tag:"Qui suis-je",
+    about_title:"Je suis Aurora,<br /><em>coach et fondatrice.</em>",
+    about_p1:"Mon parcours est né il y a plus de 10 ans, du désir de transformer le mouvement en quelque chose de plus profond qu'un simple entraînement : un outil pour se connaître, se retrouver et se sentir mieux dans son corps.",
+    about_p2:"Après des années d'expérience comme personal trainer et l'ouverture de mon premier centre à Prato, j'ai choisi d'apporter ma vision aussi à Forte dei Marmi, en créant un studio privé de Pilates où l'attention, la qualité et le soin de la personne sont au cœur de chaque parcours.",
+    about_p3:"Aurora Forte Club est le fruit d'une histoire faite de détermination, d'authenticité et de choix courageux. Un lieu pensé pour ceux qui recherchent une expérience personnalisée, élégante et entièrement sur mesure.",
+    about_script:"Plus de 10 ans de passion.", about_cta:"Réservez votre séance",
+    serv_tag:"Ce que je propose", serv_title:"Les services",
+    serv1_h:"Cours individuel",
+    serv1_p:"Une heure qui vous est exclusivement dédiée. Un programme construit sur vos besoins, constamment mis à jour séance après séance. Le maximum d'efficacité et de personnalisation.",
+    serv2_h:"Cours en duo",
+    serv2_p:"Partagez l'expérience avec une personne de votre choix — une amie, votre partenaire. Le suivi reste personnalisé pour chacune, avec la motivation en plus de s'entraîner ensemble.",
+    serv3_h:"Petit groupe", serv3_max:"(4 personnes max)",
+    serv3_p:"Un format exclusif qui préserve l'attention individuelle tout en partageant l'énergie du groupe. Des cours programmés à rythme fixe, pour un parcours constant et motivant.",
+    serv4_h:"Parcours spécialisé",
+    serv4_p:"Post-rééducation, grossesse et post-partum, rééducation posturale. Des programmes étudiés dans les moindres détails pour des besoins spécifiques, avec le même soin qu'à chaque séance.",
+    steps_tag:"Le parcours", steps_title:"Comment ça marche",
+    step1_h:"Séance de découverte",
+    step1_p:"Une rencontre pour comprendre votre histoire, vos objectifs et ce que vous souhaitez changer. Avec toute l'attention et le soin que vous méritez.",
+    step2_h:"Première séance",
+    step2_p:"Nous évaluons ensemble posture, mobilité et points forts. Nous commençons à bouger en conscience, en posant les bases de votre parcours.",
+    step3_h:"Parcours sur mesure",
+    step3_p:"Un programme qui évolue avec vous, semaine après semaine. Aucune séance ne ressemble à une autre. Seulement de vrais progrès.",
+    fdm_tag:"Nouveau Studio · 2025",
+    fdm_sub:"Un espace exclusif au cœur de Forte dei Marmi. Plafonds drapés, lumière naturelle, miroirs ovales dorés et équipements haut de gamme. Une expérience sensorielle autant que physique.",
+    fdm_cta:"Réserver à Forte dei Marmi",
+    testi_tag:"Avis", testi_title:"Les mots<br /><em>de nos clientes</em>",
+    testi_role1:"Cliente Aurora Personal Pilates", testi_role2:"Cliente depuis 2 ans", testi_role3:"Cliente — Forte dei Marmi",
+    reel_link:"Voir l'avis sur Instagram",
+    reel_note:"Les aperçus des vidéos Instagram ne se chargent qu'avec votre consentement aux cookies tiers.",
+    reel_note_btn:"Accepter et afficher les vidéos",
+    prezzi_tag:"Cours &amp; Forfaits", prezzi_title:"Choisissez<br /><em>votre parcours</em>",
+    prezzi_intro:"Chaque parcours est construit sur mesure. Contactez-moi pour connaître les options disponibles et trouver ensemble la solution qui vous convient.",
+    pz1_h:"Cours privé", pz1_d:"Individuel · 60 min",
+    pz1_l1:"Attention exclusive", pz1_l2:"Programme personnalisé", pz1_l3:"Progression constante",
+    pz_both:"Disponible à Prato et Forte dei Marmi",
+    pz2_h:"Cours en duo", pz2_d:"2 personnes · 60 min",
+    pz2_l1:"Suivi personnalisé pour chacune", pz2_l2:"Motivation partagée", pz2_l3:"Programme adapté en duo",
+    pz3_h:"Petit groupe", pz3_d:"4 personnes max · 60 min",
+    pz3_l1:"Attention individuelle dans le groupe", pz3_l2:"Énergie collective", pz3_l3:"Rythme fixe et constant", pz3_l4:"Barre disponible à Prato",
+    pz_btn:"Demander des infos",
+    pren_tag:"Contact", pren_title:"Commençons<br /><em>ensemble.</em>",
+    pren_p1:"Écrivez-moi pour connaître les cours, les forfaits et les disponibilités — je vous réponds personnellement sous 24 heures.",
+    pren_p2:"Vous pouvez choisir le studio de Prato ou celui de Forte dei Marmi.",
+    pren_tel:"Téléphone", pren_wa:"Écrivez-moi sur WhatsApp →",
+    f_name:"Nom et prénom", f_name_ph:"Votre nom",
+    f_sede:"Studio préféré", f_sede_ph:"Choisissez un studio",
+    f_serv:"Service souhaité", f_serv_ph:"Choisissez un service",
+    f_o1:"Cours privé individuel", f_o2:"Cours en duo", f_o3:"Petit groupe (4 personnes max)", f_o4:"Barre (Prato uniquement)", f_o5:"Je ne sais pas encore",
+    f_msg:"Parlez-moi de vous", f_msg_ph:"Objectifs, éventuels problèmes physiques, disponibilités...",
+    f_submit:"Envoyer la demande",
+    f_err_name:"Veuillez saisir votre nom.", f_err_email:"Veuillez saisir une adresse email valide.",
+    f_sending:"Envoi en cours…",
+    f_ok:"Demande envoyée — je vous répondrai personnellement sous 24 heures.",
+    f_ko:"Une erreur s'est produite. Réessayez ou écrivez-moi sur WhatsApp.",
+    f_net:"Erreur de connexion. Réessayez ou écrivez-moi sur WhatsApp.",
+    ft_rights:"© 2026 Aurora Personal Pilates. Tous droits réservés.",
+    ck_text:"Ce site n'utilise que des outils techniques nécessaires. Avec votre consentement, il charge aussi des contenus tiers (vidéos Instagram) pouvant déposer des cookies.",
+    ck_nec:"Nécessaires uniquement", ck_acc:"Tout accepter",
+    sede_maps:"Itinéraire →"
+  },
+  es: {
+    nav_about:"Sobre mí", nav_services:"Servicios", nav_locations:"Sedes", nav_reviews:"Reseñas", nav_book:"Reservar",
+    hero_h1:"El Pilates<br /><em>como nunca<br />lo has vivido.</em>",
+    hero_p:"Una experiencia exclusiva, construida a tu medida. Clases individuales y programas personalizados en espacios cuidados, para quienes no se conforman con lo clásico.",
+    hero_cta1:"Reserva una sesión", hero_cta2:"Descubre los servicios", hero_new:"— NUEVO",
+    about_tag:"Sobre mí",
+    about_title:"Soy Aurora,<br /><em>entrenadora y fundadora.</em>",
+    about_p1:"Mi camino nació hace más de 10 años, del deseo de transformar el movimiento en algo más profundo que un simple entrenamiento: una herramienta para conocerse, reencontrarse y sentirse mejor en el propio cuerpo.",
+    about_p2:"Tras años de experiencia como entrenadora personal y la apertura de mi primer centro en Prato, decidí llevar mi visión también a Forte dei Marmi, creando un estudio privado de Pilates donde la atención, la calidad y el cuidado de la persona están en el centro de cada programa.",
+    about_p3:"Aurora Forte Club es el resultado de una historia hecha de determinación, autenticidad y decisiones valientes. Un lugar pensado para quienes buscan una experiencia personalizada, elegante y hecha a medida.",
+    about_script:"Más de 10 años de pasión.", about_cta:"Reserva tu clase",
+    serv_tag:"Qué ofrezco", serv_title:"Los servicios",
+    serv1_h:"Clase individual",
+    serv1_p:"Una hora dedicada exclusivamente a ti. Un programa construido según tus necesidades, actualizado constantemente sesión tras sesión. La máxima eficacia y personalización.",
+    serv2_h:"Clase en pareja",
+    serv2_p:"Comparte la experiencia con una persona elegida por ti — una amiga, tu pareja. El cuidado sigue siendo personalizado para ambas, con la motivación extra de entrenar juntas.",
+    serv3_h:"Grupo reducido", serv3_max:"(máx. 4 personas)",
+    serv3_p:"Un formato exclusivo que mantiene la atención individual compartiendo la energía del grupo. Clases programadas con ritmo fijo, para un camino constante y motivador.",
+    serv4_h:"Programa especializado",
+    serv4_p:"Post-rehabilitación, embarazo y posparto, reeducación postural. Programas estudiados en cada detalle para necesidades específicas, con el mismo cuidado de cada sesión.",
+    steps_tag:"El camino", steps_title:"Cómo funciona",
+    step1_h:"Sesión de presentación",
+    step1_p:"Un encuentro para entender tu historia, tus objetivos y lo que quieres cambiar. Con toda la atención y el cuidado que mereces.",
+    step2_h:"Primera sesión",
+    step2_p:"Evaluamos juntas postura, movilidad y puntos fuertes. Empezamos a movernos con conciencia, construyendo las bases de tu camino.",
+    step3_h:"Programa a medida",
+    step3_p:"Un programa que evoluciona contigo, semana tras semana. Ninguna clase es igual a otra. Solo progreso real.",
+    fdm_tag:"Nuevo Estudio · 2025",
+    fdm_sub:"Un espacio exclusivo en el corazón de Forte dei Marmi. Techos drapeados, luz natural, espejos ovalados dorados y máquinas de alta gama. Una experiencia sensorial además de física.",
+    fdm_cta:"Reserva en Forte dei Marmi",
+    testi_tag:"Reseñas", testi_title:"Las palabras<br /><em>de nuestras clientas</em>",
+    testi_role1:"Cliente de Aurora Personal Pilates", testi_role2:"Cliente desde hace 2 años", testi_role3:"Cliente — Forte dei Marmi",
+    reel_link:"Ver la reseña en Instagram",
+    reel_note:"Las vistas previas de los vídeos de Instagram solo se cargan con tu consentimiento a las cookies de terceros.",
+    reel_note_btn:"Aceptar y mostrar los vídeos",
+    prezzi_tag:"Clases y paquetes", prezzi_title:"Elige<br /><em>tu camino</em>",
+    prezzi_intro:"Cada programa se construye a medida. Contáctame para conocer las opciones disponibles y encontrar juntas la solución más adecuada para ti.",
+    pz1_h:"Clase privada", pz1_d:"Individual · 60 min",
+    pz1_l1:"Atención exclusiva", pz1_l2:"Programa personalizado", pz1_l3:"Progresión constante",
+    pz_both:"Disponible en Prato y Forte dei Marmi",
+    pz2_h:"Clase en pareja", pz2_d:"2 personas · 60 min",
+    pz2_l1:"Cuidado personalizado para ambas", pz2_l2:"Motivación compartida", pz2_l3:"Programa adaptado en dúo",
+    pz3_h:"Grupo reducido", pz3_d:"Máx. 4 personas · 60 min",
+    pz3_l1:"Atención individual en el grupo", pz3_l2:"Energía colectiva", pz3_l3:"Ritmo fijo y constante", pz3_l4:"Barre disponible en Prato",
+    pz_btn:"Solicitar información",
+    pren_tag:"Contacto", pren_title:"Empecemos<br /><em>juntas.</em>",
+    pren_p1:"Escríbeme para conocer clases, paquetes y disponibilidad — te respondo personalmente en 24 horas.",
+    pren_p2:"Puedes elegir la sede de Prato o la de Forte dei Marmi.",
+    pren_tel:"Teléfono", pren_wa:"Escríbeme por WhatsApp →",
+    f_name:"Nombre y apellidos", f_name_ph:"Tu nombre",
+    f_sede:"Sede preferida", f_sede_ph:"Elige una sede",
+    f_serv:"Servicio de interés", f_serv_ph:"Elige un servicio",
+    f_o1:"Clase privada individual", f_o2:"Clase en pareja", f_o3:"Grupo reducido (máx. 4 personas)", f_o4:"Barre (solo Prato)", f_o5:"Aún no lo sé",
+    f_msg:"Háblame de ti", f_msg_ph:"Objetivos, posibles problemas físicos, disponibilidad horaria...",
+    f_submit:"Enviar solicitud",
+    f_err_name:"Introduce tu nombre.", f_err_email:"Introduce una dirección de email válida.",
+    f_sending:"Enviando…",
+    f_ok:"Solicitud enviada — te responderé personalmente en 24 horas.",
+    f_ko:"Algo ha salido mal. Inténtalo de nuevo o escríbeme por WhatsApp.",
+    f_net:"Error de conexión. Inténtalo de nuevo o escríbeme por WhatsApp.",
+    ft_rights:"© 2026 Aurora Personal Pilates. Todos los derechos reservados.",
+    ck_text:"Este sitio usa solo herramientas técnicas necesarias. Con tu consentimiento, carga también contenidos de terceros (vídeos de Instagram) que pueden instalar cookies.",
+    ck_nec:"Solo necesarias", ck_acc:"Aceptar todas",
+    sede_maps:"Cómo llegar →"
+  }};
+
+  const LANG_KEY = 'aurora-lang';
+  const SUPPORTED = ['it','en','fr','es'];
+  let currentLang = 'it';
+
+  function t(key){
+    return (I18N[currentLang] && I18N[currentLang][key]) || I18N.it[key] || '';
+  }
+
+  function applyLang(lang){
+    if(SUPPORTED.indexOf(lang) === -1) lang = 'it';
+    currentLang = lang;
+    try { localStorage.setItem(LANG_KEY, lang); } catch(_){}
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const v = t(el.getAttribute('data-i18n'));
+      if(v) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      const v = t(el.getAttribute('data-i18n-ph'));
+      if(v) el.setAttribute('placeholder', v);
+    });
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.addEventListener('click', () => applyLang(b.getAttribute('data-lang')));
+  });
+
+  (function initLang(){
+    let saved = null;
+    try { saved = localStorage.getItem(LANG_KEY); } catch(_){}
+    if(!saved){
+      const nav2 = (navigator.language || 'it').slice(0,2).toLowerCase();
+      saved = SUPPORTED.indexOf(nav2) !== -1 ? nav2 : 'it';
+    }
+    applyLang(saved);
+  })();
 
   // Form — invio reale a send.php
   const form = document.getElementById('contactForm');
@@ -1571,12 +2041,11 @@
     const nome = this.nome.value.trim();
     const email = this.email.value.trim();
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if(!nome){ setStatus('Inserisci il tuo nome.', 'err'); this.nome.focus(); return; }
-    if(!emailOk){ setStatus('Inserisci un indirizzo email valido.', 'err'); this.email.focus(); return; }
+    if(!nome){ setStatus(t('f_err_name'), 'err'); this.nome.focus(); return; }
+    if(!emailOk){ setStatus(t('f_err_email'), 'err'); this.email.focus(); return; }
 
-    const original = btn.textContent;
     btn.disabled = true;
-    btn.textContent = 'Invio in corso…';
+    btn.textContent = t('f_sending');
     setStatus('', '');
 
     try{
@@ -1589,19 +2058,19 @@
       try { data = await res.json(); } catch(_) {}
 
       if(res.ok && data.ok){
-        setStatus('Richiesta inviata — ti risponderò personalmente entro 24 ore.', 'ok');
+        setStatus(t('f_ok'), 'ok');
         this.reset();
       } else {
-        setStatus((data && data.error) || 'Qualcosa è andato storto. Riprova o scrivimi su WhatsApp.', 'err');
+        setStatus((data && data.error) || t('f_ko'), 'err');
       }
     } catch(err){
-      setStatus('Errore di connessione. Riprova o scrivimi su WhatsApp.', 'err');
+      setStatus(t('f_net'), 'err');
     } finally {
       btn.disabled = false;
-      btn.textContent = original;
+      btn.textContent = t('f_submit');
     }
   });
 </script>
-  <script async src="//www.instagram.com/embed.js"></script>
+
 </body>
 </html>
