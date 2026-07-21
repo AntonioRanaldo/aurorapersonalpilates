@@ -54,16 +54,29 @@ if (trim((string)($_POST['website'] ?? '')) !== '') {
 // --- Raccolta dati ---
 $nome      = clean('nome', 120);
 $email     = trim((string)($_POST['email'] ?? ''));
+$telefono  = clean('telefono', 40);
 $sede      = clean('sede', 120);
 $servizio  = clean('servizio', 120);
 $messaggio = substr(trim((string)($_POST['messaggio'] ?? '')), 0, 4000);
 
-// --- Validazione ---
+// --- Validazione: tutti i campi obbligatori ---
 if ($nome === '') {
     respond(false, 'Il nome è obbligatorio.', 422);
 }
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     respond(false, 'Indirizzo email non valido.', 422);
+}
+if (!preg_match('/^[+0-9][0-9 ().\/-]{5,19}$/', $telefono)) {
+    respond(false, 'Numero di telefono non valido.', 422);
+}
+if ($sede === '') {
+    respond(false, 'Seleziona una sede.', 422);
+}
+if ($servizio === '') {
+    respond(false, 'Seleziona un servizio.', 422);
+}
+if ($messaggio === '') {
+    respond(false, 'Scrivi un breve messaggio.', 422);
 }
 
 // --- Config (credenziali SMTP) ---
@@ -80,6 +93,7 @@ $corpo = implode("\n", [
     str_repeat('-', 46),
     'Nome:      ' . $nome,
     'Email:     ' . $email,
+    'Telefono:  ' . $telefono,
     'Sede:      ' . ($sede !== '' ? $sede : '—'),
     'Servizio:  ' . ($servizio !== '' ? $servizio : '—'),
     '',

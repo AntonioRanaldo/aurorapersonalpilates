@@ -914,7 +914,7 @@
       .nav-close-wrap{
         display:flex;justify-content:flex-end;
         width:100%;
-        margin-bottom:auto;
+        margin-bottom:7vh; /* bilanciamento ottico: voci poco sopra il centro */
         padding-top:max(.25rem, env(safe-area-inset-top));
       }
       .nav-close{
@@ -925,7 +925,7 @@
       }
       .nav-close span{
         position:absolute;top:50%;left:50%;
-        width:22px;height:1.5px;background:var(--ink);
+        width:18px;height:1.2px;background:var(--ink);
         display:block;
       }
       .nav-close span:first-child{transform:translate(-50%,-50%) rotate(45deg)}
@@ -984,6 +984,12 @@
       /* Hamburger: visibile solo a menù chiuso (la X è dentro il pannello) */
       .hamburger{display:flex;z-index:200;position:relative}
       body.menu-open .hamburger{opacity:0;pointer-events:none}
+
+      /* Barra nav più sottile su mobile */
+      nav{padding:.45rem 5%;padding-top:max(.45rem, env(safe-area-inset-top))}
+      nav.scrolled{padding:.35rem 5%}
+      .nav-logo-img{height:46px}
+      nav.scrolled .nav-logo-img{height:40px}
 
       /* FIX stacking: a menù aperto la nav sale sopra l'overlay e sparisce visivamente,
          così il pannello (figlio della nav) è cliccabile e non viene scurito */
@@ -1111,8 +1117,8 @@
       .prezzo-card{padding:2rem 1.2rem}
     }
 
-    /* X del menù: nascosta su desktop */
-    .nav-close-wrap{display:none}
+    /* X del menù: nascosta solo su desktop */
+    @media(min-width:961px){ .nav-close-wrap{display:none} }
 
     /* Icone social PNG */
     .soc img{width:20px;height:20px;object-fit:contain;display:block}
@@ -1218,7 +1224,7 @@
 <section id="hero">
   <!-- Video di sfondo -->
   <div class="hero-video-wrap">
-    <video autoplay muted loop playsinline poster="./img/hero.jpg">
+    <video autoplay muted loop playsinline preload="auto" poster="./img/hero.jpg">
       <source src="./img/hero_video.mp4" type="video/mp4" />
     </video>
   </div>
@@ -1597,8 +1603,12 @@
       <input type="email" id="email" name="email" placeholder="tua@email.com" required />
     </div>
     <div class="form-group">
+      <label for="telefono" data-i18n="f_tel">Telefono</label>
+      <input type="tel" id="telefono" name="telefono" placeholder="+39 ..." data-i18n-ph="f_tel_ph" autocomplete="tel" required />
+    </div>
+    <div class="form-group">
       <label for="sede" data-i18n="f_sede">Sede preferita</label>
-      <select id="sede" name="sede">
+      <select id="sede" name="sede" required>
         <option value="" data-i18n="f_sede_ph">Scegli una sede</option>
         <option>Prato — Via Egisto Niccoli</option>
         <option>Forte dei Marmi — Via G. Carducci</option>
@@ -1607,7 +1617,7 @@
     </div>
     <div class="form-group">
       <label for="servizio" data-i18n="f_serv">Servizio di interesse</label>
-      <select id="servizio" name="servizio">
+      <select id="servizio" name="servizio" required>
         <option value="" data-i18n="f_serv_ph">Scegli un servizio</option>
         <option data-i18n="f_o1">Lezione privata individuale</option>
         <option data-i18n="f_o2">Lezione in coppia</option>
@@ -1618,7 +1628,7 @@
     </div>
     <div class="form-group">
       <label for="messaggio" data-i18n="f_msg">Raccontami di te</label>
-      <textarea id="messaggio" name="messaggio" rows="4" placeholder="Obiettivi, eventuali problematiche fisiche, disponibilità oraria..." data-i18n-ph="f_msg_ph"></textarea>
+      <textarea id="messaggio" name="messaggio" rows="4" required placeholder="Obiettivi, eventuali problematiche fisiche, disponibilità oraria..." data-i18n-ph="f_msg_ph"></textarea>
     </div>
     <button type="submit" class="btn-submit" data-i18n="f_submit">Invia la richiesta</button>
     <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
@@ -1670,6 +1680,16 @@
 </div>
 
 <script>
+  // Hero video — forza l'autoplay dove le policy mobile lo bloccano
+  const heroVideo = document.querySelector('#hero video');
+  if(heroVideo){
+    heroVideo.muted = true; // la proprietà JS conta più dell'attributo su alcuni browser
+    const tryPlay = () => { const p = heroVideo.play(); if(p && p.catch) p.catch(()=>{}); };
+    tryPlay();
+    document.addEventListener('touchstart', tryPlay, {once:true, passive:true});
+    document.addEventListener('click', tryPlay, {once:true});
+  }
+
   // Nav shrink
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), {passive:true});
@@ -1788,6 +1808,11 @@
     pren_p1:"Scrivimi per conoscere lezioni, pacchetti e disponibilità — ti rispondo personalmente entro 24 ore.",
     pren_p2:"Puoi scegliere la sede di Prato o quella di Forte dei Marmi.",
     pren_tel:"Telefono", pren_wa:"Scrivimi su WhatsApp →",
+    f_tel:"Telefono", f_tel_ph:"+39 ...",
+    f_err_tel:"Inserisci un numero di telefono valido.",
+    f_err_sede:"Seleziona una sede.",
+    f_err_serv:"Seleziona un servizio.",
+    f_err_msg:"Scrivi un breve messaggio.",
     f_name:"Nome e cognome", f_name_ph:"Il tuo nome",
     f_sede:"Sede preferita", f_sede_ph:"Scegli una sede",
     f_serv:"Servizio di interesse", f_serv_ph:"Scegli un servizio",
@@ -1853,6 +1878,11 @@
     pren_p1:"Write to me to learn about lessons, packages and availability — I'll reply personally within 24 hours.",
     pren_p2:"You can choose the Prato studio or the Forte dei Marmi studio.",
     pren_tel:"Phone", pren_wa:"Message me on WhatsApp →",
+    f_tel:"Phone", f_tel_ph:"+39 ...",
+    f_err_tel:"Please enter a valid phone number.",
+    f_err_sede:"Please select a studio.",
+    f_err_serv:"Please select a service.",
+    f_err_msg:"Please write a short message.",
     f_name:"Full name", f_name_ph:"Your name",
     f_sede:"Preferred studio", f_sede_ph:"Choose a studio",
     f_serv:"Service of interest", f_serv_ph:"Choose a service",
@@ -1918,6 +1948,11 @@
     pren_p1:"Écrivez-moi pour connaître les cours, les forfaits et les disponibilités — je vous réponds personnellement sous 24 heures.",
     pren_p2:"Vous pouvez choisir le studio de Prato ou celui de Forte dei Marmi.",
     pren_tel:"Téléphone", pren_wa:"Écrivez-moi sur WhatsApp →",
+    f_tel:"Téléphone", f_tel_ph:"+39 ...",
+    f_err_tel:"Veuillez saisir un numéro de téléphone valide.",
+    f_err_sede:"Veuillez sélectionner un studio.",
+    f_err_serv:"Veuillez sélectionner un service.",
+    f_err_msg:"Veuillez écrire un court message.",
     f_name:"Nom et prénom", f_name_ph:"Votre nom",
     f_sede:"Studio préféré", f_sede_ph:"Choisissez un studio",
     f_serv:"Service souhaité", f_serv_ph:"Choisissez un service",
@@ -1983,6 +2018,11 @@
     pren_p1:"Escríbeme para conocer clases, paquetes y disponibilidad — te respondo personalmente en 24 horas.",
     pren_p2:"Puedes elegir la sede de Prato o la de Forte dei Marmi.",
     pren_tel:"Teléfono", pren_wa:"Escríbeme por WhatsApp →",
+    f_tel:"Teléfono", f_tel_ph:"+39 ...",
+    f_err_tel:"Introduce un número de teléfono válido.",
+    f_err_sede:"Selecciona una sede.",
+    f_err_serv:"Selecciona un servicio.",
+    f_err_msg:"Escribe un breve mensaje.",
     f_name:"Nombre y apellidos", f_name_ph:"Tu nombre",
     f_sede:"Sede preferida", f_sede_ph:"Elige una sede",
     f_serv:"Servicio de interés", f_serv_ph:"Elige un servicio",
@@ -2053,12 +2093,18 @@
     e.preventDefault();
     const btn = this.querySelector('.btn-submit');
 
-    // Validazione minima lato client
+    // Validazione lato client — tutti i campi obbligatori
     const nome = this.nome.value.trim();
     const email = this.email.value.trim();
+    const telefono = this.telefono.value.trim();
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const telOk = /^[+0-9][0-9 ().\/-]{5,19}$/.test(telefono);
     if(!nome){ setStatus(t('f_err_name'), 'err'); this.nome.focus(); return; }
     if(!emailOk){ setStatus(t('f_err_email'), 'err'); this.email.focus(); return; }
+    if(!telOk){ setStatus(t('f_err_tel'), 'err'); this.telefono.focus(); return; }
+    if(!this.sede.value){ setStatus(t('f_err_sede'), 'err'); this.sede.focus(); return; }
+    if(!this.servizio.value){ setStatus(t('f_err_serv'), 'err'); this.servizio.focus(); return; }
+    if(!this.messaggio.value.trim()){ setStatus(t('f_err_msg'), 'err'); this.messaggio.focus(); return; }
 
     btn.disabled = true;
     btn.textContent = t('f_sending');
