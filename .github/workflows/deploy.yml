@@ -17,7 +17,7 @@ jobs:
           server: ${{ secrets.ARUBA_FTP_HOST }}
           username: ${{ secrets.ARUBA_FTP_USER }}
           password: ${{ secrets.ARUBA_FTP_PASS }}
-          server-dir: /
+          server-dir: /www.aurorapersonalpilates.it/
           exclude: |
             **/.git*
             **/.git*/**
