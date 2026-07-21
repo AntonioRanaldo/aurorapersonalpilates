@@ -41,3 +41,5 @@ jobs:
             config.example.php
             README.md
             istruzioni_vecchio_dev.txt
+ docs/**
+
