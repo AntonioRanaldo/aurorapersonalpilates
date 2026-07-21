@@ -1,17 +1,3 @@
-# ────────────────────────────────────────────────────────────────
-# Deploy automatico su Aruba via FTP a ogni push su main.
-#
-# PER ATTIVARLO:
-#   1) rinomina questo file in  deploy.yml  (togli ".example")
-#   2) su GitHub: Settings → Secrets and variables → Actions → New secret
-#      crea:  ARUBA_FTP_HOST , ARUBA_FTP_USER , ARUBA_FTP_PASS
-#      (le credenziali FTP le trovi nel pannello Aruba)
-#   3) verifica "server-dir": su molti hosting Aruba la cartella pubblica
-#      è "/" oppure "/www/" o "htdocs/". Controlla via File Manager.
-#
-# NOTA: config.php NON è nel repo (è segreto). Caricalo UNA VOLTA a mano
-#       via File Manager/FTP. Il deploy automatico non lo tocca.
-# ────────────────────────────────────────────────────────────────
 name: Deploy su Aruba
 
 on:
@@ -28,10 +14,10 @@ jobs:
       - name: Upload via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server:   ${{ secrets.ARUBA_FTP_HOST }}
+          server: ${{ secrets.ARUBA_FTP_HOST }}
           username: ${{ secrets.ARUBA_FTP_USER }}
           password: ${{ secrets.ARUBA_FTP_PASS }}
-          server-dir: ./
+          server-dir: /www.aurorapersonalpilates.it/
           exclude: |
             **/.git*
             **/.git*/**
@@ -40,6 +26,4 @@ jobs:
             config.php
             config.example.php
             README.md
-            istruzioni_vecchio_dev.txt
- docs/**
-
+            docs/**
